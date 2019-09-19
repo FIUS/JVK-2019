@@ -14,8 +14,8 @@ import de.unistuttgart.informatik.fius.icge.simulation.Simulation;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Wall;
 
 /**
- * TODO: Description
- * @author name
+ * a set of tools for an easy field creation
+ * @author paulesn
  */
 public class SimulationUtilities {
     
@@ -39,24 +39,17 @@ public class SimulationUtilities {
         sim.getPlayfield().addEntity(new Position(x,y), new Wall());
         for(int i=x+1; i<=x+width;i++) {
             sim.getPlayfield().addEntity(new Position(i,y), new Wall());
-            System.out.println("done "+i+"|"+y);
         }
-        System.out.println("--1--");
         for(int i=y+1; i<=y+height;i++) {
             sim.getPlayfield().addEntity(new Position(x,i), new Wall());
-            System.out.println("done "+i+"|"+y);
         }
-        System.out.println("--2--");
         for(int i=x+1; i<=x+width;i++) {
             sim.getPlayfield().addEntity(new Position(i,y+height), new Wall());
-            System.out.println("done "+i+"|"+y);
         }
-        System.out.println("--3--");
         for(int i=y+1; i<=x+height-1;i++) {
             sim.getPlayfield().addEntity(new Position(x+width,i), new Wall());
             System.out.println("done "+i+"|"+y);
         }
-        System.out.println("--4--");
     }
     
 }

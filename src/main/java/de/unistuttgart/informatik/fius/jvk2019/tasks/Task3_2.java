@@ -9,13 +9,17 @@
  */
 package de.unistuttgart.informatik.fius.jvk2019.tasks;
 
+import de.unistuttgart.informatik.fius.icge.simulation.Position;
 import de.unistuttgart.informatik.fius.icge.simulation.Simulation;
 import de.unistuttgart.informatik.fius.icge.simulation.tasks.Task;
 import de.unistuttgart.informatik.fius.jvk2019.provided.SimulationUtilities;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Neo;
+import de.unistuttgart.informatik.fius.jvk2019.provided.entity.PhoneBooth;
+
 
 /**
  * TODO: Description
+ * 
  * @author name
  */
 public abstract class Task3_2 implements Task {
@@ -34,7 +38,7 @@ public abstract class Task3_2 implements Task {
     public void prepare(Simulation sim) {
         this.sim = sim;
         SimulationUtilities.createRectangleWall(sim, 1, 15, 0, 0);
-        System.out.println("all done");
+        sim.getPlayfield().addEntity(new Position(15, 1), new PhoneBooth());
         this.sim.getSimulationClock().start();
     }
     
@@ -46,5 +50,4 @@ public abstract class Task3_2 implements Task {
         // TODO Auto-generated method stub
         return false;
     }
-    
 }

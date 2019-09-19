@@ -68,5 +68,17 @@ public class Neo extends MovableEntity {
         
     }
     
+    /**
+     * checks if neo is currently standing on a field that also contains a phone booth
+     * 
+     * @return true if neo stands on a field with a phone booth
+     */
+    public Boolean isOnPhoneBooth() {
+        if(this.getPlayfield().getEntitiesOfTypeAt(this.getPosition(), PhoneBooth.class, true).size()>0) {
+            return true;
+        }
+        return false;
+    }
+    
     
 }

@@ -24,7 +24,9 @@ public enum Texture {
     /** The normal wall texture */
     WALL("wall/wall-default.png"),
     /** The default neo textures */
-    NEO("neo/neo-east-0.png", "neo/neo-south-0.png", "neo/neo-west-0.png", "neo/neo-north-0.png");
+    NEO("neo/neo-east-0.png", "neo/neo-south-0.png", "neo/neo-west-0.png", "neo/neo-north-0.png"), 
+    /** the default phone booth texture*/
+    PHONEBOOTH("phonebooth.png");
     
     //for directional textures this is east
     private final TextureInfo info;
