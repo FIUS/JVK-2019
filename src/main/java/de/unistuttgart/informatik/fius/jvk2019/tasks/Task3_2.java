@@ -30,6 +30,11 @@ public abstract class Task3_2 implements Task {
     protected Simulation sim;
     
     /**
+     * are the booths destroyed?
+     */
+    protected Boolean boothsDestroyed = false;
+    
+    /**
      * The walking neo
      */
     protected Neo neo;
@@ -37,17 +42,24 @@ public abstract class Task3_2 implements Task {
     @Override
     public void prepare(Simulation sim) {
         this.sim = sim;
+        this.changeToD();
         SimulationUtilities.createRectangleWall(sim, 1, 15, 0, 0);
-        sim.getPlayfield().addEntity(new Position(15, 1), new PhoneBooth());
+        if (!boothsDestroyed) {
+            sim.getPlayfield().addEntity(new Position(14, 1), new PhoneBooth());
+        }
         this.sim.getSimulationClock().start();
     }
     
+    /**
+     * 
+     */
+    protected abstract void changeToD();
+
     @Override
     public abstract void solve();
     
     @Override
     public boolean verify() {
-        // TODO Auto-generated method stub
-        return false;
+        return neo.isOnPhoneBooth();
     }
 }
