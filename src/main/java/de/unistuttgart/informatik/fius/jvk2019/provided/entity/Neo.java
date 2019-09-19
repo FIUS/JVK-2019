@@ -31,6 +31,19 @@ public class Neo extends MovableEntity {
         return 10;
     }
     /**
+     * 
+     * @return whether there is a pill to collect
+     */
+    protected boolean canCollectPill() {
+        return false;
+    }
+    /**
+     * collects a pill from the actual field
+     */
+    protected void collectPill() {
+        
+    }
+    /**
      * collects a coin from the actual field
      * @throws NoCoinException
      */
