@@ -22,12 +22,7 @@ import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Wall;
  * 
  * @author Tim-Julian Ehret
  */
-public abstract class Task2_1 implements Task {
-    
-    /**
-     * the simulation
-     */
-    protected Simulation sim;
+public abstract class Task2_1 extends TaskWithHelperFunctions {
     
     /**
      * The spinning neo
@@ -41,7 +36,7 @@ public abstract class Task2_1 implements Task {
     
     @Override
     public void prepare(Simulation sim) {
-        this.sim = sim;
+        super.prepare(sim);
         
         this.turningNeo = new Neo();
         
@@ -59,10 +54,10 @@ public abstract class Task2_1 implements Task {
         this.flag1 = this.turningNeo.getLookingDirection() == last.clockWiseNext().clockWiseNext().clockWiseNext();
         turnAround();
         this.flag2 = this.turningNeo.getLookingDirection() == last.clockWiseNext();
-        int actualCoins = Helper.getCoinCount(turningNeo);
-        this.flag3 = this.getBalance() == actualCoins*2;
+        int actualCoins = this.getCoinCount(turningNeo);
+        this.flag3 = this.getBalance() == actualCoins * 2;
         gainCoins(42);
-        this.flag4 = (actualCoins+42) == Helper.getCoinCount(turningNeo);
+        this.flag4 = (actualCoins + 42) == this.getCoinCount(turningNeo);
     }
     
     /**
@@ -88,7 +83,6 @@ public abstract class Task2_1 implements Task {
      *     number of coins to add
      */
     public abstract void gainCoins(final int additionalCoins);
-    
     
     @Override
     public final boolean verify() {

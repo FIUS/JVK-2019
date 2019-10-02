@@ -21,12 +21,7 @@ import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Wall;
  * 
  * @author Tim Neumann
  */
-public abstract class Task1 implements Task {
-    
-    /**
-     * the simulation
-     */
-    protected Simulation sim;
+public abstract class Task1 extends TaskWithHelperFunctions {
     
     /**
      * The walking neo
@@ -40,20 +35,21 @@ public abstract class Task1 implements Task {
     
     @Override
     public void prepare(Simulation sim) {
-        this.sim = sim;
-        sim.getPlayfield().addEntity(new Position(-3, -1), new Wall());
-        sim.getPlayfield().addEntity(new Position(-3, 0), new Wall());
-        sim.getPlayfield().addEntity(new Position(-3, 1), new Wall());
-        sim.getPlayfield().addEntity(new Position(3, -1), new Wall());
-        sim.getPlayfield().addEntity(new Position(3, 0), new Wall());
-        sim.getPlayfield().addEntity(new Position(3, 1), new Wall());
+        super.prepare(sim);
+        
+        sim.getPlayfield().addEntity(new Position(-1, -1), new Wall());
+        sim.getPlayfield().addEntity(new Position(-1, 0), new Wall());
+        sim.getPlayfield().addEntity(new Position(-1, 1), new Wall());
+        sim.getPlayfield().addEntity(new Position(5, -1), new Wall());
+        sim.getPlayfield().addEntity(new Position(5, 0), new Wall());
+        sim.getPlayfield().addEntity(new Position(5, 1), new Wall());
         
         this.walkingNeo = new Neo();
         
         this.spinningNeo = new Neo();
         
-        sim.getPlayfield().addEntity(new Position(-1, 0), this.walkingNeo);
-        sim.getPlayfield().addEntity(new Position(0, 0), this.spinningNeo);
+        sim.getPlayfield().addEntity(new Position(0, 0), this.walkingNeo);
+        sim.getPlayfield().addEntity(new Position(2, 0), this.spinningNeo);
         
     }
     

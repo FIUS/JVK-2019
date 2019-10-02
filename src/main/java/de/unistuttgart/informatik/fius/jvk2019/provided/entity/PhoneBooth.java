@@ -9,10 +9,7 @@
  */
 package de.unistuttgart.informatik.fius.jvk2019.provided.entity;
 
-import de.unistuttgart.informatik.fius.icge.simulation.Playfield;
-import de.unistuttgart.informatik.fius.icge.simulation.Position;
 import de.unistuttgart.informatik.fius.icge.simulation.entity.*;
-import de.unistuttgart.informatik.fius.icge.ui.Drawable;
 import de.unistuttgart.informatik.fius.jvk2019.Texture;
 
 
@@ -23,16 +20,37 @@ import de.unistuttgart.informatik.fius.jvk2019.Texture;
  */
 public class PhoneBooth extends BasicEntity implements SolidEntity {
     
-    @Override
-    public boolean isCurrentlySolid() {        
-        return false;
+    /**
+     * If the phoneBooth is not reachable it is solid.
+     * 
+     * Set to true if all requirements for this phoneBooth are met.
+     */
+    private boolean isReachable = false;
+    
+    /**
+     * Set the status of the requirements for this phoneBooth to fulfilled.
+     */
+    public void setRequirementsAsFulfilled() {
+        this.isReachable = true;
     }
-
+    
+    /**
+     * Set the status of the requirements for this phoneBooth to unfulfilled.
+     */
+    public void setRequirementsNotFulfilled() {
+        this.isReachable = false;
+    }
+    
+    @Override
+    public boolean isCurrentlySolid() {
+        return !this.isReachable;
+    }
+    
     @Override
     protected String getTextureHandle() {
         return Texture.PHONEBOOTH.getHandle();
     }
-
+    
     @Override
     protected int getZPosition() {
         return 1;

@@ -15,11 +15,10 @@ import java.util.List;
 import de.unistuttgart.informatik.fius.icge.simulation.Direction;
 import de.unistuttgart.informatik.fius.icge.simulation.Position;
 import de.unistuttgart.informatik.fius.icge.simulation.Simulation;
-import de.unistuttgart.informatik.fius.icge.simulation.tasks.Task;
-import de.unistuttgart.informatik.fius.jvk2019.provided.Coin;
+import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Coin;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Neo;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Wall;
-import de.unistuttgart.informatik.fius.jvk2019.provided.entity.myNeo;
+import de.unistuttgart.informatik.fius.jvk2019.provided.entity.MyNeo;
 
 
 /**
@@ -27,12 +26,7 @@ import de.unistuttgart.informatik.fius.jvk2019.provided.entity.myNeo;
  * 
  * @author Tim-Julian Ehret
  */
-public abstract class Task2_4 implements Task {
-    
-    /**
-     * the simulation
-     */
-    protected Simulation sim;
+public abstract class Task2_4 extends TaskWithHelperFunctions {
     
     /**
      * The spinning neo
@@ -45,7 +39,7 @@ public abstract class Task2_4 implements Task {
     
     @Override
     public void prepare(Simulation sim) {
-        this.sim = sim;
+        super.prepare(sim);
         
         this.neo = new Neo();
         
@@ -58,18 +52,18 @@ public abstract class Task2_4 implements Task {
         this.flag1 = false;
         this.flag2 = false;
         this.flag3 = false;
-        List<myNeo> neos = sim.getPlayfield().getAllEntitiesOfType(myNeo.class, false);
+        List<MyNeo> neos = sim.getPlayfield().getAllEntitiesOfType(MyNeo.class, false);
         if (neos.size() >= 2) {
             this.flag1 = true;
             //TODO check log for 360-turn
         }
         
-        for (Iterator<myNeo> iterator = neos.iterator(); iterator.hasNext();) {
-            myNeo myNeo = iterator.next();
-            if (Helper.getCoinCount(myNeo) == 998) {
+        for (Iterator<MyNeo> iterator = neos.iterator(); iterator.hasNext();) {
+            MyNeo myNeo = iterator.next();
+            if (this.getCoinCount(myNeo) == 998) {
                 this.flag2 = true;
             }
-            if (Helper.getCoinCount(myNeo) == 2) {
+            if (this.getCoinCount(myNeo) == 2) {
                 this.flag3 = true;
             }
             // maybe check log for the transfer of coins between the neos...

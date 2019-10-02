@@ -13,6 +13,7 @@ import de.unistuttgart.informatik.fius.icge.simulation.Direction;
 import de.unistuttgart.informatik.fius.icge.ui.TextureNotFoundException;
 import de.unistuttgart.informatik.fius.icge.ui.TextureRegistry;
 
+
 /**
  * The enum for all builtin textures of the jvk 2019.
  * 
@@ -22,10 +23,12 @@ public enum Texture {
     /** The "missing texture" texture */
     MISSING("missing.png"),
     /** The normal wall texture */
-    WALL("wall/wall-default.png"),
+    WALL("wall-default.png"),
+    /** The normal coin texture */
+    COIN("coin-default.png"),
     /** The default neo textures */
-    NEO("neo/neo-east-0.png", "neo/neo-south-0.png", "neo/neo-west-0.png", "neo/neo-north-0.png"), 
-    /** the default phone booth texture*/
+    NEO("mario/mario-east-0.png", "mario/mario-south-0.png", "mario/mario-west-0.png", "mario/mario-north-0.png"),
+    /** the default phone booth texture */
     PHONEBOOTH("phonebooth.png");
     
     //for directional textures this is east
@@ -36,7 +39,7 @@ public enum Texture {
     private TextureInfo westInfo = null;
     
     private TextureInfo northInfo = null;
-
+    
     Texture(String textureLocation) {
         this.info = new TextureInfo(textureLocation);
     }
@@ -50,9 +53,10 @@ public enum Texture {
     
     private void load(TextureRegistry registry, TextureInfo infoToLoad) {
         try {
-            infoToLoad.textureHandle = registry.loadTextureFromResource("textures/" + infoToLoad.textureLocation, Texture.class::getResourceAsStream);
+            infoToLoad.textureHandle = registry
+                    .loadTextureFromResource("textures/" + infoToLoad.textureLocation, Texture.class::getResourceAsStream);
         } catch (TextureNotFoundException e) {
-            System.out.println("Could not find texture:");
+            System.out.println("Could not find texture: " + infoToLoad.textureLocation);
             e.printStackTrace();
             infoToLoad.textureHandle = registry
                     .loadTextureFromResource("textures/" + MISSING.info.textureLocation, Texture.class::getResourceAsStream);
@@ -63,9 +67,9 @@ public enum Texture {
      * Load this texture with the given registry
      * 
      * @param registry
-     *            The registry to load the texture with.
+     *     The registry to load the texture with.
      * @throws TextureNotFoundException
-     *             if neither the correct nor the "missing texture" texture can be found
+     *     if neither the correct nor the "missing texture" texture can be found
      */
     public void load(TextureRegistry registry) {
         load(registry, this.info);
@@ -73,7 +77,7 @@ public enum Texture {
         if (this.westInfo != null) load(registry, this.westInfo);
         if (this.northInfo != null) load(registry, this.northInfo);
     }
-
+    
     /**
      * Get the handle of this texture.
      * <p>
@@ -82,7 +86,7 @@ public enum Texture {
      * 
      * @return the texture handle of this
      * @throws IllegalStateException
-     *             if the texture was not loaded before.
+     *     if the texture was not loaded before.
      */
     public String getHandle() {
         if (this.info.textureHandle == null) throw new IllegalStateException("Need to be loaded first");
@@ -106,7 +110,7 @@ public enum Texture {
      */
     public String getHandle(Direction direction) {
         if (this.info.textureHandle == null) throw new IllegalStateException("Need to be loaded first");
-        switch(direction) {
+        switch (direction) {
             case EAST:
                 break;
             case SOUTH:

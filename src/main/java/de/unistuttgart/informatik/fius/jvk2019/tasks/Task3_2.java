@@ -11,7 +11,6 @@ package de.unistuttgart.informatik.fius.jvk2019.tasks;
 
 import de.unistuttgart.informatik.fius.icge.simulation.Position;
 import de.unistuttgart.informatik.fius.icge.simulation.Simulation;
-import de.unistuttgart.informatik.fius.icge.simulation.tasks.Task;
 import de.unistuttgart.informatik.fius.jvk2019.provided.SimulationUtilities;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Neo;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.PhoneBooth;
@@ -22,12 +21,7 @@ import de.unistuttgart.informatik.fius.jvk2019.provided.entity.PhoneBooth;
  * 
  * @author name
  */
-public abstract class Task3_2 implements Task {
-    
-    /**
-     * the simulation
-     */
-    protected Simulation sim;
+public abstract class Task3_2 extends TaskWithHelperFunctions {
     
     /**
      * are the booths destroyed?
@@ -41,7 +35,8 @@ public abstract class Task3_2 implements Task {
     
     @Override
     public void prepare(Simulation sim) {
-        this.sim = sim;
+        super.prepare(sim);
+        
         this.changeToD();
         SimulationUtilities.createRectangleWall(sim, 1, 15, 0, 0);
         if (!boothsDestroyed) {
@@ -54,7 +49,7 @@ public abstract class Task3_2 implements Task {
      * 
      */
     protected abstract void changeToD();
-
+    
     @Override
     public abstract void solve();
     

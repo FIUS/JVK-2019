@@ -13,7 +13,7 @@ import de.unistuttgart.informatik.fius.icge.simulation.Direction;
 import de.unistuttgart.informatik.fius.icge.simulation.Position;
 import de.unistuttgart.informatik.fius.icge.simulation.Simulation;
 import de.unistuttgart.informatik.fius.icge.simulation.tasks.Task;
-import de.unistuttgart.informatik.fius.jvk2019.provided.Coin;
+import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Coin;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Neo;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Wall;
 
@@ -23,12 +23,7 @@ import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Wall;
  * 
  * @author Tim-Julian Ehret
  */
-public abstract class Task2_2 implements Task {
-    
-    /**
-     * the simulation
-     */
-    protected Simulation sim;
+public abstract class Task2_2 extends TaskWithHelperFunctions {
     
     /**
      * The spinning neo
@@ -39,7 +34,7 @@ public abstract class Task2_2 implements Task {
     
     @Override
     public void prepare(Simulation sim) {
-        this.sim = sim;
+        super.prepare(sim);
         
         this.neo = new Neo();
         

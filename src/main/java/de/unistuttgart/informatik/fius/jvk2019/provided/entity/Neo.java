@@ -9,17 +9,18 @@
  */
 package de.unistuttgart.informatik.fius.jvk2019.provided.entity;
 
-import de.unistuttgart.informatik.fius.icge.simulation.entity.MovableEntity;
+import de.unistuttgart.informatik.fius.icge.simulation.entity.GreedyEntity;
 import de.unistuttgart.informatik.fius.jvk2019.Texture;
 import de.unistuttgart.informatik.fius.jvk2019.provided.exceptions.NeoIsBrokeException;
 import de.unistuttgart.informatik.fius.jvk2019.provided.exceptions.NoCoinException;
+
 
 /**
  * The Neo entity
  * 
  * @author Tim Neumann
  */
-public class Neo extends MovableEntity {
+public class Neo extends GreedyEntity {
     
     @Override
     protected String getTextureHandle() {
@@ -30,6 +31,7 @@ public class Neo extends MovableEntity {
     protected int getZPosition() {
         return 10;
     }
+    
     /**
      * 
      * @return whether there is a pill to collect
@@ -37,23 +39,28 @@ public class Neo extends MovableEntity {
     protected boolean canCollectPill() {
         return false;
     }
+    
     /**
      * collects a pill from the actual field
      */
     protected void collectPill() {
         
     }
+    
     /**
      * collects a coin from the actual field
+     * 
      * @throws NoCoinException
      */
-    protected void collectCoin(){
+    protected void collectCoin() {
     }
+    
     /**
      * drops a coin from Neo's inventory to the actual field
+     * 
      * @throws NeoIsBrokeException
      */
-    protected void dropCoin() {       
+    protected void dropCoin() {
     }
     
     /**
@@ -64,6 +71,7 @@ public class Neo extends MovableEntity {
         //TODO
         return false;
     }
+    
     /**
      * 
      * @return whether there is a coin to collect
@@ -73,8 +81,10 @@ public class Neo extends MovableEntity {
         return false;
         
     }
+    
     /**
      * setter for coins
+     * 
      * @param coins
      */
     protected void setCoins(int coins) {
@@ -87,11 +97,10 @@ public class Neo extends MovableEntity {
      * @return true if neo stands on a field with a phone booth
      */
     public Boolean isOnPhoneBooth() {
-        if(this.getPlayfield().getEntitiesOfTypeAt(this.getPosition(), PhoneBooth.class, true).size()>0) {
+        if (this.getPlayfield().getEntitiesOfTypeAt(this.getPosition(), PhoneBooth.class, true).size() > 0) {
             return true;
         }
         return false;
     }
-    
     
 }

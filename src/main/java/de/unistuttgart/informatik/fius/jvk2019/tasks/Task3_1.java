@@ -10,7 +10,6 @@
 package de.unistuttgart.informatik.fius.jvk2019.tasks;
 
 import de.unistuttgart.informatik.fius.icge.simulation.Simulation;
-import de.unistuttgart.informatik.fius.icge.simulation.tasks.Task;
 import java.util.concurrent.ThreadLocalRandom;
 
 
@@ -19,10 +18,11 @@ import java.util.concurrent.ThreadLocalRandom;
  * 
  * @author paulesn
  */
-public abstract class Task3_1 implements Task {
+public abstract class Task3_1 extends TaskWithHelperFunctions {
     
     @Override
     public void prepare(Simulation arg0) {
+        super.prepare(sim);
         // TODO Auto-generated method stub
         
     }

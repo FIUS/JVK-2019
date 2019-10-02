@@ -7,18 +7,24 @@
  * This software is available under the MIT license.
  * SPDX-License-Identifier:    MIT
  */
-package de.unistuttgart.informatik.fius.jvk2019.tasks;
-
-import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Neo;
+package de.unistuttgart.informatik.fius.jvk2019.provided.entity;
 
 /**
  * TODO: Description
+ * 
  * @author Tim-Julian Ehret
  */
-public class Helper {
+public class MyNeo extends Neo {
     
-    protected final static int getCoinCount(Neo neo) {
-        // TODO load number of coins 
-        return 0;
+    /**
+     * 
+     */
+    public MyNeo() {
+        
     }
+    
+    public MyNeo(int starterCoins) {
+        this.setCoins(starterCoins);
+    }
+    
 }
