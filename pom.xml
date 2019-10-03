@@ -8,7 +8,7 @@
 	<name>JVK 2019 Project</name>
 	<properties>
 		<java.version>11</java.version>
-		<icge.version>2.1.1</icge.version>
+		<icge.version>2.1.2</icge.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
         <repositories>
