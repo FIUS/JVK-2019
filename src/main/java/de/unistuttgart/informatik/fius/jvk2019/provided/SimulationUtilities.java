@@ -48,7 +48,6 @@ public class SimulationUtilities {
         }
         for(int i=y+1; i<=x+height-1;i++) {
             sim.getPlayfield().addEntity(new Position(x+width,i), new Wall());
-            System.out.println("done "+i+"|"+y);
         }
     }
     

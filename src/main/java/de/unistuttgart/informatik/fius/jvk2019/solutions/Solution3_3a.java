@@ -9,27 +9,19 @@
  */
 package de.unistuttgart.informatik.fius.jvk2019.solutions;
 
-import de.unistuttgart.informatik.fius.jvk2019.tasks.Task3_2a;
-
+import de.unistuttgart.informatik.fius.jvk2019.tasks.Task3_3;
 
 /**
- * TODO: the solution class to exercise 2 on worksheet 3
- * 
+ * TODO: Solution for exercise 3 (a) of worksheet 3
  * @author paulesn
  */
-public class Solution3_2 extends Task3_2a {
-    
+public class Solution3_3a extends Task3_3 {
+
     @Override
-    protected void changeToD() {
-        //change this Boolean to true for (d).
-        this.boothsDestroyed = false;
-    }
-    
-    @Override
-    public void solve() {
-        
-        //start solution here
+    public final void solve() {
+        // TODO Auto-generated method stub
         
     }
+    
     
 }

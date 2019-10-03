@@ -142,6 +142,20 @@ public abstract class TaskWithHelperFunctions implements Task {
         // TODO wait for all entity programs
     }
     
+    /**
+     * Add an entity to the playfield.
+     * 
+     * @param entity
+     *     the entity to add
+     * @param x
+     *     the x coordinate
+     * @param y
+     *     the y coordinate
+     */
+    protected void spawnEntity(final Entity entity, final int x, final int y) {
+        this.sim.getPlayfield().addEntity(new Position(x, y), entity);
+    }
+    
     protected int getCoinCount(GreedyEntity entity) {
         // TODO implementation
         return 0;

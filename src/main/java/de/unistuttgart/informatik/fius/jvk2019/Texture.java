@@ -29,8 +29,10 @@ public enum Texture {
     /** The default neo textures */
     NEO("mario/mario-east-0.png", "mario/mario-south-0.png", "mario/mario-west-0.png", "mario/mario-north-0.png"),
     /** the default phone booth texture */
-    PHONEBOOTH("phonebooth.png");
-    
+    PHONEBOOTH("phonebooth.png"),
+    /**PILLS*/
+    BLUEPILL("pills/pill_blue.png"),
+    REDPILL("pills/pill_red.png");
     //for directional textures this is east
     private final TextureInfo info;
     

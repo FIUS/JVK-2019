@@ -9,36 +9,20 @@
  */
 package de.unistuttgart.informatik.fius.jvk2019.provided.entity;
 
-import de.unistuttgart.informatik.fius.icge.simulation.entity.Entity;
 import de.unistuttgart.informatik.fius.icge.simulation.entity.GreedyEntity;
-import de.unistuttgart.informatik.fius.icge.simulation.entity.program.EntityProgram;
 
 
 /**
  * A program for neo
  * 
- * @author Tim Neumann
+ * @author Fabian Bühler
  */
-public abstract class GreedyEntityProgram implements EntityProgram {
+public abstract class GreedyEntityProgram extends TypedProgram<GreedyEntity> {
     
     /**
-     * Run this program on the given greedy entity.
-     * 
-     * @param entity
-     *     The greedy entity to run this program on
+     * Create a new GreedyEntityProgram.
      */
-    public abstract void run(GreedyEntity entity);
-    
-    @Override
-    public void run(final Entity entity) {
-        if (entity instanceof GreedyEntity) {
-            this.run((GreedyEntity) entity);
-        } else throw new IllegalArgumentException("Cannot run on that entity.");
-    }
-    
-    @Override
-    public boolean canRunOn(final Entity entity) {
-        if (entity instanceof GreedyEntity) return true;
-        return false;
+    public GreedyEntityProgram() {
+        super(GreedyEntity.class);
     }
 }
