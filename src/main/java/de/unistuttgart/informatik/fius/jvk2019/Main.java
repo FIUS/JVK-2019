@@ -18,6 +18,8 @@ import de.unistuttgart.informatik.fius.jvk2019.solutions.Solution0_2;
 import de.unistuttgart.informatik.fius.jvk2019.solutions.Solution0_3;
 import de.unistuttgart.informatik.fius.jvk2019.solutions.Solution0_4;
 import de.unistuttgart.informatik.fius.jvk2019.solutions.Solution1;
+import de.unistuttgart.informatik.fius.jvk2019.solutions.Solution2_1;
+import de.unistuttgart.informatik.fius.jvk2019.solutions.Solution2_4;
 import de.unistuttgart.informatik.fius.jvk2019.solutions.Solution3_1;
 import de.unistuttgart.informatik.fius.jvk2019.solutions.Solution3_2;
 import de.unistuttgart.informatik.fius.jvk2019.solutions.Solution3_3a;
@@ -57,6 +59,9 @@ public class Main {
         tr.registerTask("Task0 c)", new Solution0_3());
         tr.registerTask("Task0 d)", new Solution0_4());
         tr.registerTask("Task1", new Solution1());
+        tr.registerTask("Task2 1", new Solution2_1());
+        tr.registerTask("Task2 2", new Solution2_4());
+        tr.registerTask("Task2 4", new Solution2_4());
         tr.registerTask("Task3_1", new Solution3_1());
         tr.registerTask("Task3_2", new Solution3_2());
         tr.registerTask("Task3_3 (a)", new Solution3_3a());

@@ -62,7 +62,7 @@ public abstract class Task2_1 extends TaskWithHelperFunctions {
     
    /**
      * a)
-     * Neu turns left.
+     * Neo turns left.
      */
     public abstract void turnLeft();
     

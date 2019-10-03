@@ -37,6 +37,8 @@ public abstract class Task2_4 extends TaskWithHelperFunctions {
     private boolean flag2;
     private boolean flag3;
     
+    protected List<MyNeo> neos;
+    
     @Override
     public void prepare(Simulation sim) {
         super.prepare(sim);
@@ -52,14 +54,15 @@ public abstract class Task2_4 extends TaskWithHelperFunctions {
         this.flag1 = false;
         this.flag2 = false;
         this.flag3 = false;
-        List<MyNeo> neos = sim.getPlayfield().getAllEntitiesOfType(MyNeo.class, false);
-        if (neos.size() >= 2) {
+        neos = sim.getPlayfield().getAllEntitiesOfType(MyNeo.class, false);
+        if (neos.size() >= 2) {   
             this.flag1 = true;
-            //TODO check log for 360-turn
         }
         
         for (Iterator<MyNeo> iterator = neos.iterator(); iterator.hasNext();) {
             MyNeo myNeo = iterator.next();
+            if(myNeo.getLookingDirection() == Direction.EAST) {
+            }
             if (this.getCoinCount(myNeo) == 998) {
                 this.flag2 = true;
             }
@@ -72,10 +75,9 @@ public abstract class Task2_4 extends TaskWithHelperFunctions {
         
     }
     
-    /**
-     * turns Neo to the left
-     */
-    public abstract void turnLeft();
+    public void addNeo(MyNeo newNeo) {
+        this.neos.add(newNeo);
+    }
     
     /**
      * turns Neo around
