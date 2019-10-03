@@ -49,7 +49,7 @@ public class Main {
         tr.registerTask("Task0 d)", new Solution0_4());
         tr.registerTask("Task1", new Solution1());
         tr.registerTask("Task3_1", new Solution3_1());
-        tr.registerTask("Task3_2", new Solution3_2());
+        tr.registerTask("Task3_2", new Solution3_2a());
         tr.registerTask("Task3_3 (a)", new Solution3_3a());
         tr.registerTask("Task3_3 (b)", new Solution3_3b());
         tr.registerTask("Task3_4", new Solution3_4());
