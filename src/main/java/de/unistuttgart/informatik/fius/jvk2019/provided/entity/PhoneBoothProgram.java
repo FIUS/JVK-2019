@@ -10,16 +10,16 @@
 package de.unistuttgart.informatik.fius.jvk2019.provided.entity;
 
 /**
- * A program for neo
+ * A program for PhoneBooth
  * 
- * @author Tim Neumann
+ * @author Fabian Bühler
  */
-public abstract class NeoProgram extends TypedProgram<Neo> {
+public abstract class PhoneBoothProgram extends TypedProgram<PhoneBooth> {
     
     /**
-     * Create a new NeoProgram.
+     * Create a new PhoneBoothProgram.
      */
-    public NeoProgram() {
-        super(Neo.class);
+    public PhoneBoothProgram() {
+        super(PhoneBooth.class);
     }
 }
