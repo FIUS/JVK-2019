@@ -21,7 +21,7 @@ import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Pill;
  * TODO: The task for ex 2 (b) on worksheet 3
  * @author paulesn
  */
-public class Task3_2b {
+public abstract class Task3_3b extends TaskWithHelperFunctions{
 
     /**
      * The spinning neo
@@ -58,9 +58,9 @@ public class Task3_2b {
         playfield.addEntity(new Position(x, y), new Pill(Color.RED));
         //second step
         y-=getRandom();
-        playfield.addEntity(new Position(x, y), new Pill(Color.RED));
+        playfield.addEntity(new Position(x, y), new Pill(Color.BLUE));
         //third step
-        x-=getRandom();
+        x+=getRandom();
         playfield.addEntity(new Position(x, y), new Pill(Color.RED));
         //last step
         y+=getRandom();
@@ -72,6 +72,14 @@ public class Task3_2b {
     
     private int getRandom() {
         return (int) (Math.random()*10)+2;
+    }
+    
+    private Pill peakPill() {
+        java.util.List<Pill> pills= sim.getPlayfield().getEntitiesOfTypeAt(neo.getPosition(), Pill.class, true);
+        if(pills.size()>0) {
+            return pills.get(0);
+        }
+        return null;
     }
     
     public abstract void solve();

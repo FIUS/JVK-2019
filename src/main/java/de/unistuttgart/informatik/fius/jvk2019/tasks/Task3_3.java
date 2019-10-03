@@ -83,6 +83,14 @@ public abstract class Task3_3 extends TaskWithHelperFunctions {
         return (int) (Math.random()*10)+2;
     }
     
+    private Pill peakPill() {
+        java.util.List<Pill> pills= sim.getPlayfield().getEntitiesOfTypeAt(neo.getPosition(), Pill.class, true);
+        if(pills.size()>0) {
+            return pills.get(0);
+        }
+        return null;
+    }
+    
     public abstract void solve();
     
     @Override
