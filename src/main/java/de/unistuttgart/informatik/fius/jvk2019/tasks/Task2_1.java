@@ -38,6 +38,8 @@ public abstract class Task2_1 extends TaskWithHelperFunctions {
     public void prepare(Simulation sim) {
         super.prepare(sim);
         
+        
+        //prepare a neo and add him to the playfield at  (0,0)
         this.turningNeo = new Neo();
         
         sim.getPlayfield().addEntity(new Position(0, 0), this.turningNeo);
@@ -46,7 +48,6 @@ public abstract class Task2_1 extends TaskWithHelperFunctions {
     
     @Override
     public final void solve() {
-        
         this.flag1 = false;
         this.flag2 = false;
         Direction last = this.turningNeo.getLookingDirection();
@@ -54,10 +55,10 @@ public abstract class Task2_1 extends TaskWithHelperFunctions {
         this.flag1 = this.turningNeo.getLookingDirection() == last.clockWiseNext().clockWiseNext().clockWiseNext();
         turnAround();
         this.flag2 = this.turningNeo.getLookingDirection() == last.clockWiseNext();
-        int actualCoins = this.getCoinCount(turningNeo);
+        int actualCoins = this.getCoinCount(this.turningNeo);
         this.flag3 = this.getBalance() == actualCoins * 2;
         gainCoins(42);
-        this.flag4 = (actualCoins + 42) == this.getCoinCount(turningNeo);
+        this.flag4 = (actualCoins + 42) == this.getCoinCount(this.turningNeo);
     }
     
    /**
