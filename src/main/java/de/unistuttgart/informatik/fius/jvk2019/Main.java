@@ -21,6 +21,7 @@ import de.unistuttgart.informatik.fius.jvk2019.solutions.Solution3_1;
 import de.unistuttgart.informatik.fius.jvk2019.solutions.Solution3_2;
 import de.unistuttgart.informatik.fius.jvk2019.solutions.Solution3_3a;
 import de.unistuttgart.informatik.fius.jvk2019.solutions.Solution3_3b;
+import de.unistuttgart.informatik.fius.jvk2019.solutions.Solution3_4;
 
 
 /**
@@ -58,5 +59,6 @@ public class Main {
         tr.registerTask("Task3_2", new Solution3_2());
         tr.registerTask("Task3_3 (a)", new Solution3_3a());
         tr.registerTask("Task3_3 (b)", new Solution3_3b());
+        tr.registerTask("Task3_4", new Solution3_4());
     }
 }
