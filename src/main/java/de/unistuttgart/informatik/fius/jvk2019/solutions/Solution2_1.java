@@ -14,48 +14,41 @@ import de.unistuttgart.informatik.fius.jvk2019.tasks.Task2_1;
 /**
  * The solution for @see Task2_1, Sheet 2 Task 1
  * 
- * @author Stefan Zindl
+ * TODO: 2.2.b) add author
  */
 public class Solution2_1 extends Task2_1 {
     
     /**
-     * a)
-     * Turn left.
+     * TODO: 2.2.a) create JavaDoc
      */
     @Override
     public void turnLeft(){
-        //TODO: Implement method, so it can turn left.
+        //TODO: 2.1 a) Implement operation, so turningNeo can turn left.
     }
     
     /**
-     * b)
-     * Turns around.
+     * TODO: 2.2.a) create JavaDoc
      */
     @Override
     public void turnAround(){
-        //TODO: Implement method, so it can turn around.
+        //TODO: 2.1 b) Implement operation, so turningNeo can turn around.
     }
     
     /**
-     * c)
-     * Lets return.
-     * @return Neo's balance
+     * TODO: 2.2.a) create JavaDoc
      */
     @Override
     public int getBalance(){
-        //TODO: Implement method, so it returns the value of the balance.
+        //TODO: 2.1 c) Implement operation, so it returns the value of neo's balance.
         return 0;
     }
     
     /**
-     * Increases Neo's coins.
-     * d)
-     * @param amount
-     *     number of coins to add
+     * TODO: 2.2.a) create JavaDoc
      */
     @Override
     public void gainCoins(final int amount){
-        //TODO: Implement method, so it returns the new amount of coins.
+        //TODO: 2.1 d) Implement operation, so it returns the new amount of coins.
     }
 
 }
