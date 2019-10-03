@@ -7,18 +7,22 @@
  * This software is available under the MIT license.
  * SPDX-License-Identifier:    MIT
  */
-package de.unistuttgart.informatik.fius.jvk2019.provided;
+package de.unistuttgart.informatik.fius.jvk2019.provided.entity;
 
 import de.unistuttgart.informatik.fius.icge.simulation.Playfield;
 import de.unistuttgart.informatik.fius.icge.simulation.Position;
+import de.unistuttgart.informatik.fius.icge.simulation.entity.BasicEntity;
+import de.unistuttgart.informatik.fius.icge.simulation.entity.CollectableEntity;
 import de.unistuttgart.informatik.fius.icge.simulation.entity.Entity;
 import de.unistuttgart.informatik.fius.icge.ui.Drawable;
+import de.unistuttgart.informatik.fius.jvk2019.Texture;
+import de.unistuttgart.informatik.fius.jvk2019.provided.Color;
 
 /**
  * TODO: Description
- * @author Tim-Julian Ehret
+ * @author Tim-Julian Ehret, paulesn
  */
-public class Pill implements Entity{
+public class Pill extends BasicEntity implements CollectableEntity{
     
     private Color color;
     
@@ -29,30 +33,31 @@ public class Pill implements Entity{
     public Pill(Color color) {
         this.color = color;
     }
-    
-    @Override
-    public Drawable getDrawInformation() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public Position getPosition() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public void initOnPlayfield(Playfield arg0) {
-        // TODO Auto-generated method stub
-        
-    }
+      
     
     /**
      * @return the color of this pill
      */
     public Color getColor() {
         return this.color;
+    }
+
+    @Override
+    protected int getZPosition() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+
+    @Override
+    protected String getTextureHandle() {
+        if(color == Color.BLUE) {
+            return Texture.BLUEPILL.getHandle();
+        }
+        if(color == Color.RED) {
+            return Texture.REDPILL.getHandle();
+        }
+        return Texture.REDPILL.getHandle();
     }
     
 }

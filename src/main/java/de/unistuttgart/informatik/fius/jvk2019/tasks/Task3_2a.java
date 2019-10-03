@@ -21,7 +21,7 @@ import de.unistuttgart.informatik.fius.jvk2019.provided.entity.PhoneBooth;
  *
  * @author name
  */
-public abstract class Task3_2 extends TaskWithHelperFunctions {
+public abstract class Task3_2a extends TaskWithHelperFunctions {
 
     /**
      * are the booths destroyed?

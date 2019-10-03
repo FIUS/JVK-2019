@@ -9,29 +9,20 @@
  */
 package de.unistuttgart.informatik.fius.jvk2019.tasks;
 
-import java.util.Iterator;
-import java.util.List;
-
-import de.unistuttgart.informatik.fius.icge.simulation.Direction;
 import de.unistuttgart.informatik.fius.icge.simulation.Playfield;
 import de.unistuttgart.informatik.fius.icge.simulation.Position;
 import de.unistuttgart.informatik.fius.icge.simulation.Simulation;
-import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Coin;
 import de.unistuttgart.informatik.fius.jvk2019.provided.Color;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Neo;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.PhoneBooth;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Pill;
-import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Wall;
-import de.unistuttgart.informatik.fius.jvk2019.provided.entity.MyNeo;
-
 
 /**
- * The Task for sheet 3.3
- * 
- * @author Tim-Julian Ehret
+ * TODO: The task for ex 2 (b) on worksheet 3
+ * @author paulesn
  */
-public abstract class Task3_3 extends TaskWithHelperFunctions {
-    
+public class Task3_2b {
+
     /**
      * The spinning neo
      */
@@ -89,5 +80,4 @@ public abstract class Task3_3 extends TaskWithHelperFunctions {
     public boolean verify() {
         return this.flag1;
     }
-    
 }
