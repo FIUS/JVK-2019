@@ -32,7 +32,10 @@ public enum Texture {
     PHONEBOOTH("phonebooth.png"),
     /**PILLS*/
     BLUEPILL("pills/pill_blue.png"),
-    REDPILL("pills/pill_red.png");
+    REDPILL("pills/pill_red.png"),
+    /**the default morpheus texture*/
+    MORPHEUS("morpheus/morpheus-east-0.png","morpheus/morpheus-south-0.png","morpheus/morpheus-west-0.png","morpheus/morpheus-north-0.png");
+    
     //for directional textures this is east
     private final TextureInfo info;
     
