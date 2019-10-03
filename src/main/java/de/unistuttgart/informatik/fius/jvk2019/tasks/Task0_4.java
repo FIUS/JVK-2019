@@ -79,7 +79,7 @@ public abstract class Task0_4 extends TaskWithHelperFunctions {
         }
         // check player position
         final Position pos = this.player.getPosition();
-        return pos.getX() == 5 && pos.getY() == 0 && !this.player.canMove();
+        return pos.getX() == 4 && pos.getY() == 0 && !this.player.canMove();
     }
     
 }
