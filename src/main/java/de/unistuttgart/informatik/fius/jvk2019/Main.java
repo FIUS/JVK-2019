@@ -27,7 +27,7 @@ import de.unistuttgart.informatik.fius.jvk2019.solutions.Solution3_2;
  * @author Tim Neumann
  */
 public class Main {
-    
+
     /**
      * The main entry point of the project
      *
@@ -39,14 +39,14 @@ public class Main {
         prepareTextures(host.getTextureRegistry());
         prepareTasks(host.getTaskRegistry());
     }
-    
+
     private static void prepareTextures(TextureRegistry tr) {
         // load textures
         for (Texture texture : Texture.values()) {
             texture.load(tr);
         }
     }
-    
+
     private static void prepareTasks(TaskRegistry tr) {
         tr.registerTask("Task0 a)", new Solution0_1());
         tr.registerTask("Task0 b)", new Solution0_2());
