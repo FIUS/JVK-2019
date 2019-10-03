@@ -18,9 +18,9 @@ import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Wall;
 
 
 /**
- * An example task
  * 
- * @author Tim-Julian Ehret
+ * Task for Sheet 2, Task 1 2019
+ * @author Tim-Julian Ehret, Stefan Zindl
  */
 public abstract class Task2_1 extends TaskWithHelperFunctions {
     
@@ -60,29 +60,31 @@ public abstract class Task2_1 extends TaskWithHelperFunctions {
         this.flag4 = (actualCoins + 42) == this.getCoinCount(turningNeo);
     }
     
-    /**
-     * turns Neo to the left
+   /**
+     * a)
+     * Neu turns left.
      */
     public abstract void turnLeft();
     
     /**
-     * turns Neo around
+     * b)
+     * Neo turns around.
      */
     public abstract void turnAround();
     
     /**
-     * 
-     * @return Neo's balance
+     * c)
+     * Neo´s balance.
+     * @return Neo's amount balance
      */
     public abstract int getBalance();
     
     /**
-     * increases Neo's coins
-     * 
-     * @param additionalCoins
-     *     number of coins to add
+     * d)
+     * Neo´s amount of coins.
+     * @return Neo's balance
      */
-    public abstract void gainCoins(final int additionalCoins);
+    public abstract void gainCoins(final int amount);
     
     @Override
     public final boolean verify() {
