@@ -12,6 +12,7 @@ package de.unistuttgart.informatik.fius.jvk2019.provided.entity;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
+import de.unistuttgart.informatik.fius.icge.simulation.Playfield;
 import de.unistuttgart.informatik.fius.icge.simulation.Position;
 import de.unistuttgart.informatik.fius.icge.simulation.entity.CollectableEntity;
 import de.unistuttgart.informatik.fius.icge.simulation.entity.Entity;
@@ -83,13 +84,13 @@ public class RequirementChecks {
             final Supplier<GreedyEntity> entityGetter, Class<? extends CollectableEntity> collectableType,
             final Predicate<Integer> numberPredicate
     ) {
-        if (entityGetter == null) throw new IllegalArgumentException("Entity cannot be null!");
+        if (entityGetter == null) throw new IllegalArgumentException("EntityGetter cannot be null!");
         if (collectableType == null) throw new IllegalArgumentException("Collectable Type cannot be null!");
         if (numberPredicate == null) throw new IllegalArgumentException("NumberPredicate cannot be null!");
         return () -> {
-            GreedyEntity entity = entityGetter.get();
+            final GreedyEntity entity = entityGetter.get();
             if (entity == null) return false;
-            int collectableCount = entity.getInventory().get(collectableType, true).size();
+            final int collectableCount = entity.getInventory().get(collectableType, true).size();
             return numberPredicate.test(collectableCount);
         };
     }
@@ -128,17 +129,76 @@ public class RequirementChecks {
      * @return the created supplier
      */
     final public static Supplier<Boolean> testEntitiesOnSameField(final Supplier<Entity> a, final Supplier<Entity> b) {
+        if (a == null || b == null) throw new IllegalArgumentException("Entity getter cannot be null!");
         return () -> {
             try {
-                Entity entA = a.get();
-                Entity entB = b.get();
+                final Entity entA = a.get();
+                final Entity entB = b.get();
                 if (entA == null || entB == null) return false;
-                Position posA = entA.getPosition();
-                Position posB = entB.getPosition();
+                final Position posA = entA.getPosition();
+                final Position posB = entB.getPosition();
                 return posA.equals(posB);
             } catch (EntityNotOnFieldException e) {
                 return false;
             }
+        };
+    }
+    
+    /**
+     * Get a new supplier that checks if the entity is on the given position.
+     * <p>
+     * The entity getter will be called for every evaluation of the supplier. If the entity getter returns null the
+     * supplier returns false.
+     * 
+     * @param entityGetter
+     *     the getter for the entity to check the inventory of
+     * @param x
+     *     coordinate
+     * @param y
+     *     coordinate
+     * @return the created supplier
+     */
+    final public static Supplier<Boolean> testEntityOnField(final Supplier<Entity> entityGetter, final int x, final int y) {
+        if (entityGetter == null) throw new IllegalArgumentException("EntityGetter cannot be null!");
+        final Position posToTest = new Position(x, y);
+        return () -> {
+            try {
+                final Entity entity = entityGetter.get();
+                if (entity == null) return false;
+                final Position entityPos = entity.getPosition();
+                return entityPos.equals(posToTest);
+            } catch (EntityNotOnFieldException e) {
+                return false;
+            }
+        };
+    }
+    
+    /**
+     * Get e new supplier that checks the number of Entites at {@code Position(x, y)} on the field against the given
+     * numberPredicate.
+     * 
+     * @param field
+     *     the playfield to check
+     * @param entityType
+     *     the entity type to look for (use {link Entity} to capture all entites)
+     * @param numberPredicate
+     *     the predicate to check the entity count against
+     * @param x
+     *     coordinate
+     * @param y
+     *     coordinate
+     * @return the new supplier
+     */
+    final public static Supplier<Boolean> testEntytyCountOnField(
+            final Playfield field, Class<? extends Entity> entityType, final Predicate<Integer> numberPredicate, final int x, final int y
+    ) {
+        if (field == null) throw new IllegalArgumentException("Playfield cannot be null!");
+        if (entityType == null) throw new IllegalArgumentException("Entity Type cannot be null!");
+        if (numberPredicate == null) throw new IllegalArgumentException("NumberPredicate cannot be null!");
+        final Position posToTest = new Position(x, y);
+        return () -> {
+            final int entityCount = field.getEntitiesOfTypeAt(posToTest, entityType, true).size();
+            return numberPredicate.test(entityCount);
         };
     }
     
