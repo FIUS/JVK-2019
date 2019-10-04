@@ -10,18 +10,15 @@
 package de.unistuttgart.informatik.fius.jvk2019.tasks;
 
 import java.util.function.Supplier;
-import java.util.stream.Stream;
 
 import de.unistuttgart.informatik.fius.icge.simulation.Playfield;
 import de.unistuttgart.informatik.fius.icge.simulation.Position;
 import de.unistuttgart.informatik.fius.icge.simulation.Simulation;
-import de.unistuttgart.informatik.fius.icge.simulation.tasks.Task;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Coin;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Neo;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.PhoneBooth;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.RequirementChecks;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.StandardPhoneBoothProgram;
-import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Wall;
 
 
 /**
@@ -49,15 +46,13 @@ public abstract class Task0_4 extends TaskWithHelperFunctions {
         
         this.spawnEntity(new Coin(), 1, 0);
         
-        this.player = new Neo();
-        
         this.goal = new PhoneBooth();
-        Supplier<Boolean> canUseBooth = RequirementChecks.testCoinCount(this.player, RequirementChecks.getGreaterThanPredicate(0));
+        Supplier<Boolean> canUseBooth = RequirementChecks.testCoinCount(() -> this.player, RequirementChecks.getGreaterThanPredicate(0));
         this.goal.setRequirementsChecker(canUseBooth);
         this.spawnEntity(this.goal, 4, 0);
         
         String goalChecker = this.registerProgram(
-                "goalChecker", new StandardPhoneBoothProgram(RequirementChecks.testEntitiesOnSameField(this.player, this.goal))
+                "goalChecker", new StandardPhoneBoothProgram(RequirementChecks.testEntitiesOnSameField(() -> this.player, () -> this.goal))
         );
         this.bindProgramToEntity(goalChecker, this.goal);
     }

@@ -67,9 +67,12 @@ public class RequirementChecks {
     /**
      * Get a new supplier that checks the number of Collectables of type {@code collectableType} in the {@code entity}
      * against the given number predicate.
+     * <p>
+     * The entity getter will be called for every evaluation of the supplier. If the entity getter returns null the
+     * supplier returns false.
      * 
-     * @param entity
-     *     the entity to check the inventory of
+     * @param entityGetter
+     *     the getter for the entity to check the inventory of
      * @param collectableType
      *     the collectable type to check the number of
      * @param numberPredicate
@@ -77,12 +80,15 @@ public class RequirementChecks {
      * @return the created supplier
      */
     final public static Supplier<Boolean> testInventoryCount(
-            final GreedyEntity entity, Class<? extends CollectableEntity> collectableType, final Predicate<Integer> numberPredicate
+            final Supplier<GreedyEntity> entityGetter, Class<? extends CollectableEntity> collectableType,
+            final Predicate<Integer> numberPredicate
     ) {
-        if (entity == null) throw new IllegalArgumentException("Entity cannot be null!");
+        if (entityGetter == null) throw new IllegalArgumentException("Entity cannot be null!");
         if (collectableType == null) throw new IllegalArgumentException("Collectable Type cannot be null!");
         if (numberPredicate == null) throw new IllegalArgumentException("NumberPredicate cannot be null!");
         return () -> {
+            GreedyEntity entity = entityGetter.get();
+            if (entity == null) return false;
             int collectableCount = entity.getInventory().get(collectableType, true).size();
             return numberPredicate.test(collectableCount);
         };
@@ -91,31 +97,44 @@ public class RequirementChecks {
     /**
      * Get a new supplier that checks the number of Collectables of type {@link Coin} in the {@code entity} against the
      * given number predicate.
+     * <p>
+     * The entity getter will be called for every evaluation of the supplier. If the entity getter returns null the
+     * supplier returns false.
      * 
-     * @param entity
-     *     the entity to check the inventory of
+     * @param entityGetter
+     *     the getter for the entity to check the inventory of
      * @param numberPredicate
      *     the predicate to check the collectable count against
      * @return the created supplier
      */
-    final public static Supplier<Boolean> testCoinCount(final GreedyEntity entity, final Predicate<Integer> numberPredicate) {
-        return RequirementChecks.testInventoryCount(entity, Coin.class, numberPredicate);
+    final public static Supplier<Boolean> testCoinCount(
+            final Supplier<GreedyEntity> entityGetter, final Predicate<Integer> numberPredicate
+    ) {
+        return RequirementChecks.testInventoryCount(entityGetter, Coin.class, numberPredicate);
     }
     
     /**
      * Get a new supplier that checks if two entities are on the same position.
+     * <p>
+     * The entity getters will be called for every evaluation of the supplier. If any entity getter returns null the
+     * supplier returns false.
+     * <p>
+     * If any of the entities is not on a playfield the supplier returns null.
      * 
      * @param a
-     *     entity a
+     *     the getter for entity a
      * @param b
-     *     entity b
+     *     the getter for entity b
      * @return the created supplier
      */
-    final public static Supplier<Boolean> testEntitiesOnSameField(final Entity a, final Entity b) {
+    final public static Supplier<Boolean> testEntitiesOnSameField(final Supplier<Entity> a, final Supplier<Entity> b) {
         return () -> {
             try {
-                Position posA = a.getPosition();
-                Position posB = b.getPosition();
+                Entity entA = a.get();
+                Entity entB = b.get();
+                if (entA == null || entB == null) return false;
+                Position posA = entA.getPosition();
+                Position posB = entB.getPosition();
                 return posA.equals(posB);
             } catch (EntityNotOnFieldException e) {
                 return false;

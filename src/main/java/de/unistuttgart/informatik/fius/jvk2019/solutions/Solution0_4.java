@@ -9,7 +9,6 @@
  */
 package de.unistuttgart.informatik.fius.jvk2019.solutions;
 
-import de.unistuttgart.informatik.fius.icge.simulation.Position;
 import de.unistuttgart.informatik.fius.icge.simulation.Simulation;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Coin;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Neo;
@@ -26,6 +25,8 @@ public class Solution0_4 extends Task0_4 {
     @Override
     public void prepare(Simulation sim) {
         super.prepare(sim);
+        
+        this.player = new Neo();
         this.spawnEntity(this.player, 0, 0);
     }
     
