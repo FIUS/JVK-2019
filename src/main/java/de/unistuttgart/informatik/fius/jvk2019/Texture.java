@@ -27,14 +27,19 @@ public enum Texture {
     /** The normal coin texture */
     COIN("coin-default.png"),
     /** The default neo textures */
-    NEO("mario/mario-east-0.png", "mario/mario-south-0.png", "mario/mario-west-0.png", "mario/mario-north-0.png"),
+    NEO("neo/neo-east-0.png", "neo/neo-south-0.png", "neo/neo-west-0.png", "neo/neo-north-0.png"),
+    /** the default morpheus texture */
+    MORPHEUS(
+            "morpheus/morpheus-east-0.png", "morpheus/morpheus-south-0.png", "morpheus/morpheus-west-0.png", "morpheus/morpheus-north-0.png"
+    ),
+    /** The default mario textures */
+    MARIO("mario/mario-east-0.png", "mario/mario-south-0.png", "mario/mario-west-0.png", "mario/mario-north-0.png"),
     /** the default phone booth texture */
     PHONEBOOTH("Telefon.png"),
-    /**PILLS*/
+    /** red pill texture */
     BLUEPILL("pills/pill_blue.png"),
-    REDPILL("pills/pill_red.png"),
-    /**the default morpheus texture*/
-    MORPHEUS("morpheus/morpheus-east-0.png","morpheus/morpheus-south-0.png","morpheus/morpheus-west-0.png","morpheus/morpheus-north-0.png");
+    /** blue pill texture */
+    REDPILL("pills/pill_red.png");
     
     //for directional textures this is east
     private final TextureInfo info;
