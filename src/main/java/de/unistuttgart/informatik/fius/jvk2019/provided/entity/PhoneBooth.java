@@ -87,18 +87,4 @@ public class PhoneBooth extends BasicEntity implements SolidEntity {
         return 1;
     }
     
-    /**
-     * Sleep for n ticks.
-     * 
-     * TODO use method from entity if avalable
-     */
-    protected void sleep(int n) {
-        final CompletableFuture<Void> endOfOperation = new CompletableFuture<>();
-        try {
-            this.getSimulation().getSimulationClock().scheduleOperationInTicks(n, endOfOperation);
-        } finally {
-            endOfOperation.complete(null);
-        }
-    }
-    
 }

@@ -11,6 +11,9 @@ package de.unistuttgart.informatik.fius.jvk2019.tasks;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
@@ -21,6 +24,7 @@ import de.unistuttgart.informatik.fius.icge.simulation.entity.Entity;
 import de.unistuttgart.informatik.fius.icge.simulation.entity.GreedyEntity;
 import de.unistuttgart.informatik.fius.icge.simulation.entity.program.EntityProgram;
 import de.unistuttgart.informatik.fius.icge.simulation.entity.program.EntityProgramRunner;
+import de.unistuttgart.informatik.fius.icge.simulation.entity.program.RunningProgramInfo;
 import de.unistuttgart.informatik.fius.icge.simulation.tasks.Task;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Wall;
 
@@ -136,10 +140,15 @@ public abstract class TaskWithHelperFunctions implements Task {
      */
     protected void waitForEntitesToFinishProgram(Entity... entities) {
         final EntityProgramRunner runner = this.sim.getEntityProgramRunner();
-        Arrays.stream(entities)
-                //.map(ent -> runner.getRunningProgramOfEntity(ent))
-                .filter(program -> program == null).collect(Collectors.toList());
-        // TODO wait for all entity programs
+        final List<CompletableFuture<Void>> runningPrograms = Arrays.stream(entities).map(ent -> {
+            try {
+                RunningProgramInfo info = runner.getRunningProgramInfo(ent);
+                return info.getFuture();
+            } catch (@SuppressWarnings("unused") IllegalArgumentException | NoSuchElementException e) {
+                return null;
+            }
+        }).filter(program -> program != null).collect(Collectors.toList());
+        CompletableFuture.allOf(runningPrograms.toArray(new CompletableFuture[runningPrograms.size()])).join();
     }
     
     /**
