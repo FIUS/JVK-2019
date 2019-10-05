@@ -155,6 +155,13 @@ public class Neo extends GreedyEntity {
     }
     
     /**
+     * @return the number of coins in neos wallet
+     */
+    public int getCoinsInWallet() {
+        return this.currentCoinCount;
+    }
+    
+    /**
      * Helper field to hold the current amount of coins set by setCoinsForVerify
      */
     public int currentCoinCount;
