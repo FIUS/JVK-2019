@@ -6,7 +6,7 @@ jobs:
   - stage: test
   - name: "Check javadoc"
     script:
-    - mvn javadoc:javadoc
+    - mvn compile javadoc:javadoc
   - stage: deploy
     name: "Deploy javadoc"
     script:
