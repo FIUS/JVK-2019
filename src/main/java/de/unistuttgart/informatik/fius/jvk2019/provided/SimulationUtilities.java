@@ -22,8 +22,8 @@ public class SimulationUtilities {
     /**
      * creates Wall Entities so that they form a rectangle surrounding an area of the size height*width
      * @param sim the Simulation you want the rectangle in
-     * @param height the height of the rectangle (> 0)
-     * @param width the width of the rectangle (> 0)
+     * @param height the height of the rectangle (&gt; 0)
+     * @param width the width of the rectangle (&gt; 0)
      * @param x the x coordinate of the most upper left Wall entity
      * @param y the y coordinate of the most upper left Wall entity
      */

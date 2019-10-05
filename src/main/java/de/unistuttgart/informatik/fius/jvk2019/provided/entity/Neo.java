@@ -51,6 +51,7 @@ public class Neo extends GreedyEntity {
      * collects a coin from the actual field
      * 
      * @throws NoCoinException
+     *     when there is no coin
      */
     protected void collectCoin() {
     }
@@ -59,6 +60,7 @@ public class Neo extends GreedyEntity {
      * drops a coin from Neo's inventory to the actual field
      * 
      * @throws NeoIsBrokeException
+     *     when Neo is broken
      */
     protected void dropCoin() {
     }
@@ -86,6 +88,7 @@ public class Neo extends GreedyEntity {
      * setter for coins
      * 
      * @param coins
+     *     the amount of coins to set
      */
     protected void setCoins(int coins) {
         
@@ -124,8 +127,9 @@ public class Neo extends GreedyEntity {
     }
     
     /**
-     * Gets the Balance of the current Neo.     * 
-     * Operation is to be implmented in MyNeo in Task 2.1.c) .
+     * Gets the Balance of the current Neo. * Operation is to be implmented in MyNeo in Task 2.1.c) .
+     * 
+     * @return the balance
      */
     @SuppressWarnings("static-method")
     public int getBalance()
@@ -134,8 +138,10 @@ public class Neo extends GreedyEntity {
     }
     
     /**
-     * Adds an amount of coins to the wallet of Neo.     
-     * Operation is to be implmented in MyNeo in Task 2.1.d) .
+     * Adds an amount of coins to the wallet of Neo. Operation is to be implmented in MyNeo in Task 2.1.d) .
+     * 
+     * @param amountOfCoins
+     *     The amount to gain
      */
     @SuppressWarnings("static-method")
     public void gainCoins(int amountOfCoins)
