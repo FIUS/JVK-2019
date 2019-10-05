@@ -61,7 +61,7 @@ public class Main {
         tr.registerTask("Task0 d)", new Solution0_4());
         tr.registerTask("Task1", new Solution1());
         tr.registerTask("Task2 1", new Solution2_1());
-        tr.registerTask("Task2 2", new Solution2_4());
+        tr.registerTask("Task2 2", new Solution2_2());
         tr.registerTask("Task2 4", new Solution2_4());
         tr.registerTask("Task3_1", new Solution3_1());
         tr.registerTask("Task3_2", new Solution3_2());

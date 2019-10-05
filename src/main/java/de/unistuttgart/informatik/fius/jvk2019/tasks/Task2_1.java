@@ -9,13 +9,11 @@
  */
 package de.unistuttgart.informatik.fius.jvk2019.tasks;
 
+import de.unistuttgart.informatik.fius.icge.log.Logger;
 import de.unistuttgart.informatik.fius.icge.simulation.Direction;
-import de.unistuttgart.informatik.fius.icge.simulation.Position;
 import de.unistuttgart.informatik.fius.icge.simulation.Simulation;
-import de.unistuttgart.informatik.fius.icge.simulation.tasks.Task;
-import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Neo;
-import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Wall;
-
+import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Coin;
+import de.unistuttgart.informatik.fius.jvk2019.provided.entity.MyNeo;
 
 /**
  * 
@@ -25,71 +23,38 @@ import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Wall;
 public abstract class Task2_1 extends TaskWithHelperFunctions {
     
     /**
-     * The spinning neo
+     * Spawns a cage with a coin in it.
      */
-    protected Neo turningNeo;
-    
-    private boolean flag1;
-    private boolean flag2;
-    private boolean flag3;
-    private boolean flag4;
-    
     @Override
-    public void prepare(Simulation sim) {
+    public void prepare(Simulation sim) {        
         super.prepare(sim);
-        
-        
-        //prepare a neo and add him to the playfield at  (0,0)
-        this.turningNeo = new Neo();
-        
-        sim.getPlayfield().addEntity(new Position(0, 0), this.turningNeo);
-        
+        //spawning a grid of coins
+        for (int i = -9; i <= 9; i+=2) {
+            for (int j = -9; j <= 9; j+=2) {
+                this.spawnEntity(new Coin(), i, j);
+            }
+        }
+              
     }
-    
-    @Override
-    public final void solve() {
-        this.flag1 = false;
-        this.flag2 = false;
-        Direction last = this.turningNeo.getLookingDirection();
-        turnLeft();
-        this.flag1 = this.turningNeo.getLookingDirection() == last.clockWiseNext().clockWiseNext().clockWiseNext();
-        turnAround();
-        this.flag2 = this.turningNeo.getLookingDirection() == last.clockWiseNext();
-        int actualCoins = this.getCoinCount(this.turningNeo);
-        this.flag3 = this.getBalance() == actualCoins * 2;
-        gainCoins(42);
-        this.flag4 = (actualCoins + 42) == this.getCoinCount(this.turningNeo);
-    }
-    
-   /**
-     * a)
-     * Neo turns left.
-     */
-    public abstract void turnLeft();
-    
-    /**
-     * b)
-     * Neo turns around.
-     */
-    public abstract void turnAround();
-    
-    /**
-     * c)
-     * Neo´s balance.
-     * @return Neo's amount balance
-     */
-    public abstract int getBalance();
-    
-    /**
-     * d)
-     * Neo´s amount of coins.
-     * @return Neo's balance
-     */
-    public abstract void gainCoins(final int amount);
     
     @Override
     public final boolean verify() {
-        return this.flag1 && this.flag2 && this.flag3 && this.flag4;
+        
+        MyNeo myNeo = this.sim.getPlayfield().getAllEntitiesOfType(MyNeo.class,false).get(0);
+
+        //output the value of the coins that neo currently holds (1 should be collected during solve)
+        Logger.simulation.append("\nmyNeo has currently coins with the value of " + myNeo.getBalance()+"\n");
+        Direction lookingDirection = myNeo.getLookingDirection();
+                
+        myNeo.turnCounterClockwise();        
+        if(lookingDirection.clockWiseNext().clockWiseNext().clockWiseNext() != myNeo.getLookingDirection()) return false;
+        
+        myNeo.turnAround();
+        if(lookingDirection.clockWiseNext() != myNeo.getLookingDirection()) return false;
+        
+        myNeo.gainCoins(12);
+        if(myNeo.getBalance() != 24) return false;        
+        
+        return true;
     }
-    
 }

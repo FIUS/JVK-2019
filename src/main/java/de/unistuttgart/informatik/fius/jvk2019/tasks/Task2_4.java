@@ -15,6 +15,8 @@ import java.util.List;
 import de.unistuttgart.informatik.fius.icge.simulation.Direction;
 import de.unistuttgart.informatik.fius.icge.simulation.Position;
 import de.unistuttgart.informatik.fius.icge.simulation.Simulation;
+import de.unistuttgart.informatik.fius.icge.simulation.actions.EntityCollectAction;
+import de.unistuttgart.informatik.fius.icge.simulation.actions.EntityDropAction;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Coin;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Neo;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Wall;
@@ -28,65 +30,54 @@ import de.unistuttgart.informatik.fius.jvk2019.provided.entity.MyNeo;
  */
 public abstract class Task2_4 extends TaskWithHelperFunctions {
     
-    /**
-     * The spinning neo
-     */
-    protected Neo neo;
-    
-    private boolean flag1;
-    private boolean flag2;
-    private boolean flag3;
-    
-    protected List<MyNeo> neos;
-    
     @Override
     public void prepare(Simulation sim) {
         super.prepare(sim);
-        
-        this.neo = new Neo();
-        
-        sim.getPlayfield().addEntity(new Position(0, 0), this.neo);
-        
     }
-    
-    @Override
-    public final void solve() {
-        this.flag1 = false;
-        this.flag2 = false;
-        this.flag3 = false;
-        neos = sim.getPlayfield().getAllEntitiesOfType(MyNeo.class, false);
-        if (neos.size() >= 2) {   
-            this.flag1 = true;
-        }
-        
-        for (Iterator<MyNeo> iterator = neos.iterator(); iterator.hasNext();) {
-            MyNeo myNeo = iterator.next();
-            if(myNeo.getLookingDirection() == Direction.EAST) {
-            }
-            if (this.getCoinCount(myNeo) == 998) {
-                this.flag2 = true;
-            }
-            if (this.getCoinCount(myNeo) == 2) {
-                this.flag3 = true;
-            }
-            // maybe check log for the transfer of coins between the neos...
-            
-        }
-        
-    }
-    
-    public void addNeo(MyNeo newNeo) {
-        this.neos.add(newNeo);
-    }
-    
-    /**
-     * turns Neo around
-     */
-    public abstract void turnAround();
     
     @Override
     public boolean verify() {
-        return this.flag1;
+        List<MyNeo> neos = this.sim.getPlayfield().getAllEntitiesOfType(MyNeo.class, false);
+        if (neos.size() != 4) {
+            return false;
+        }
+        
+        MyNeo richNeo = null;
+        MyNeo poorNeo = null;
+        
+        for (Iterator<MyNeo> iterator = neos.iterator(); iterator.hasNext();) {
+            MyNeo myNeo = iterator.next();
+            if (myNeo.getLookingDirection() != Direction.EAST) {
+                return false;
+            }
+            if (this.getCoinCount(myNeo) == 998) {
+                richNeo = myNeo;
+            }
+            if (this.getCoinCount(myNeo) == 2) {
+                poorNeo = myNeo;
+            }
+        }
+        
+        //check log for the transfer of coins between the neos...            
+        List<EntityDropAction> drops = this.sim.getActionLog().getActionsOfType(EntityDropAction.class, false);
+        List<EntityCollectAction> collects = this.sim.getActionLog().getActionsOfType(EntityCollectAction.class, false);
+        if (drops.size() != 2 || collects.size() != 2) return false;
+        
+        //making final copies for stream api
+        final MyNeo richNeoCopy = richNeo;
+        final MyNeo poorNeoCopy = poorNeo;
+        if (
+            !drops.stream().allMatch(
+                    (dropAction) -> dropAction.getEntity() == richNeoCopy && dropAction.getDroppedEntity().getClass() == Coin.class
+            )
+        ) return false;
+        if (
+            !collects.stream().allMatch(
+                    collectAction -> collectAction.getEntity() == poorNeoCopy && collectAction.getCollectedEntity().getClass() == Coin.class
+            )
+        ) return false;
+        
+        return poorNeo != null && richNeo != null;
     }
     
 }

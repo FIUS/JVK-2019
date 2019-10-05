@@ -9,53 +9,35 @@
  */
 package de.unistuttgart.informatik.fius.jvk2019.solutions;
 
-import de.unistuttgart.informatik.fius.jvk2019.tasks.Task2_1;
+import de.unistuttgart.informatik.fius.icge.simulation.Position;
+import de.unistuttgart.informatik.fius.icge.simulation.Simulation;
+import de.unistuttgart.informatik.fius.jvk2019.tasks.Task2_2;
+import de.unistuttgart.informatik.fius.jvk2019.provided.entity.MyNeo;
+
 
 /**
- * The solution for @see Task2_1, Sheet 2 Task 1
+ * The solution for Task 2.2d)
  * 
- * @author Stefan Zindl
+ * @author Lion Wagner
  */
-public class Solution2_2 extends Task2_1 {
+public class Solution2_2 extends Task2_2 {
+       
     
-    /**
-     * a)
-     * Turn left.
-     */
     @Override
-    public void turnLeft(){
-        //TODO: Implement method, so it can turn left.
+    public void prepare(Simulation sim) {     
+        super.prepare(sim);
+                
+        //create myNeo with 6 coins and add him to the playing field
+        MyNeo myNeo = new MyNeo(6);
+        sim.getPlayfield().addEntity(new Position(0, 0), myNeo);
     }
     
     /**
-     * b)
-     * Turns around.
+     * Solve Task 2.2d here
      */
     @Override
-    public void turnAround(){
-        //TODO: Implement method, so it can turn around.
+    public void solve() {
+        //TODO: solve Task 2.2 d); let myNeo walk forward 5 times and let him drop a coin on every field
+        
     }
-    
-    /**
-     * c)
-     * Lets return.
-     * @return Neo's balance
-     */
-    @Override
-    public int getBalance(){
-        //TODO: Implement method, so it returns the value of the balance.
-        return 0;
-    }
-    
-    /**
-     * Increases Neo's coins.
-     * d)
-     * @param amount
-     *     number of coins to add
-     */
-    @Override
-    public void gainCoins(final int amount){
-        //TODO: Implement method, so it returns the new amount of coins.
-    }
-
 }

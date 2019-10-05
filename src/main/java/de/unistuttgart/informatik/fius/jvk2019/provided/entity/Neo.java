@@ -101,6 +101,61 @@ public class Neo extends GreedyEntity {
             return true;
         }
         return false;
+    }    
+      
+    /**
+     * Turns Neo counter clockwise.
+     * Operation is to be implmented in MyNeo in Task 2.1.a)
+     */
+    @SuppressWarnings("static-method")
+    public void turnCounterClockwise()
+    {
+        throw new UnsupportedOperationException("This Method is to be implemented in the MyNeo class.");
     }
     
+    /**
+     * Turns Neo around.
+     * Operation is to be implmented in MyNeo in Task 2.1.b).
+     */
+    @SuppressWarnings("static-method")
+    public void turnAround()
+    {
+        throw new UnsupportedOperationException("This Method is to be implemented in the MyNeo class.");
+    }
+    
+    /**
+     * Gets the Balance of the current Neo.     * 
+     * Operation is to be implmented in MyNeo in Task 2.1.c) .
+     */
+    @SuppressWarnings("static-method")
+    public int getBalance()
+    {
+        throw new UnsupportedOperationException("This Method is to be implemented in the MyNeo class.");
+    }
+    
+    /**
+     * Adds an amount of coins to the wallet of Neo.     
+     * Operation is to be implmented in MyNeo in Task 2.1.d) .
+     */
+    @SuppressWarnings("static-method")
+    public void gainCoins(int amountOfCoins)
+    {
+        throw new UnsupportedOperationException("This Method is to be implemented in the MyNeo class.");
+    }
+    
+    
+    /**
+     * Helper Method that sets a fixed amount of coins for easier verification.
+     * Used in Verification of Task 2.1
+     * @param amountOfCoins the new amount of coins
+     */
+    public void setCoinsInWallet(int amountOfCoins) {
+        this.setCoins(amountOfCoins);//calling real method for good measure.
+        this.currentCoinCount = amountOfCoins;
+    }
+    
+    /**
+     * Helper field to hold the current amount of coins set by setCoinsForVerify
+     */
+    public int currentCoinCount;
 }
