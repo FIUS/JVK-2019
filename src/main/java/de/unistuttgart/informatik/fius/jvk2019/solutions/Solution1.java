@@ -9,27 +9,31 @@
  */
 package de.unistuttgart.informatik.fius.jvk2019.solutions;
 
-import de.unistuttgart.informatik.fius.jvk2019.provided.WalkingProgram;
+import de.unistuttgart.informatik.fius.icge.simulation.Simulation;
+import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Neo;
 import de.unistuttgart.informatik.fius.jvk2019.tasks.Task1;
+
 
 /**
  * The example solution for Task1
  *
- * @author Tim Neumann
+ * @author Fabian Bühler
  */
 public class Solution1 extends Task1 {
-
+    
+    @Override
+    public void prepare(Simulation sim) {
+        super.prepare(sim);
+        this.player = new Neo();
+        this.spawnEntity(this.player, 0, 0);
+    }
+    
     @Override
     public void solve() {
-        String walkingProgramName = "Walking";
-
-        this.sim.getEntityProgramRegistry().registerEntityProgram(walkingProgramName, new WalkingProgram());
-
-        this.sim.getEntityProgramRunner().run(walkingProgramName, this.walkingNeo);
-
-        while (true) {
-            this.spinningNeo.turnClockWise();
-        }
+        // do AB1 task 6 here
+        // Move Neo to the field with the telephone.
+        // you only need to use the Operations this.player.move(); and this.player.turnClockWise(); to complete the task
+        this.player.move();
     }
-
+    
 }

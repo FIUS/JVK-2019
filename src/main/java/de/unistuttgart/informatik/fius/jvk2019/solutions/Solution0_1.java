@@ -9,7 +9,6 @@
  */
 package de.unistuttgart.informatik.fius.jvk2019.solutions;
 
-import de.unistuttgart.informatik.fius.icge.simulation.Position;
 import de.unistuttgart.informatik.fius.icge.simulation.Simulation;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Neo;
 import de.unistuttgart.informatik.fius.jvk2019.tasks.Task0;
@@ -26,7 +25,7 @@ public class Solution0_1 extends Task0 {
     public void prepare(Simulation sim) {
         super.prepare(sim);
         this.player = new Neo();
-        this.sim.getPlayfield().addEntity(new Position(0, 0), this.player);
+        this.spawnEntity(this.player, 0, 0);
     }
     
     @Override
@@ -34,6 +33,7 @@ public class Solution0_1 extends Task0 {
         // simple solve method directly calling the entity methods
         this.player.move();
         this.player.move();
+        // do AB1 task 5 here
         this.player.move();
         this.player.move();
         if (this.player.canMove()) {

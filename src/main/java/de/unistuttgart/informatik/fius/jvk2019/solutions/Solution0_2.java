@@ -9,7 +9,6 @@
  */
 package de.unistuttgart.informatik.fius.jvk2019.solutions;
 
-import de.unistuttgart.informatik.fius.icge.simulation.Position;
 import de.unistuttgart.informatik.fius.icge.simulation.Simulation;
 import de.unistuttgart.informatik.fius.jvk2019.provided.WalkUntilWall;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Neo;
@@ -27,7 +26,7 @@ public class Solution0_2 extends Task0 {
     public void prepare(Simulation sim) {
         super.prepare(sim);
         this.player = new Neo();
-        this.sim.getPlayfield().addEntity(new Position(0, 0), this.player);
+        this.spawnEntity(this.player, 0, 0);
     }
     
     @Override

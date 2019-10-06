@@ -9,11 +9,9 @@
  */
 package de.unistuttgart.informatik.fius.jvk2019.solutions;
 
-import de.unistuttgart.informatik.fius.icge.simulation.Position;
 import de.unistuttgart.informatik.fius.icge.simulation.Simulation;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Coin;
 import de.unistuttgart.informatik.fius.jvk2019.provided.PickupAllCollectables;
-import de.unistuttgart.informatik.fius.jvk2019.provided.WalkUntilWall;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Neo;
 import de.unistuttgart.informatik.fius.jvk2019.tasks.Task0;
 
@@ -29,13 +27,13 @@ public class Solution0_3 extends Task0 {
     public void prepare(Simulation sim) {
         super.prepare(sim);
         this.player = new Neo();
-        this.sim.getPlayfield().addEntity(new Position(0, 0), this.player);
+        this.spawnEntity(this.player, 0, 0);
         
-        this.sim.getPlayfield().addEntity(new Position(1, 0), new Coin());
-        this.sim.getPlayfield().addEntity(new Position(1, 0), new Coin());
-        this.sim.getPlayfield().addEntity(new Position(1, 0), new Coin());
-        this.sim.getPlayfield().addEntity(new Position(2, 0), new Coin());
-        this.sim.getPlayfield().addEntity(new Position(3, 0), new Coin());
+        this.spawnEntity(new Coin(), 1, 0);
+        this.spawnEntity(new Coin(), 1, 0);
+        this.spawnEntity(new Coin(), 1, 0);
+        this.spawnEntity(new Coin(), 2, 0);
+        this.spawnEntity(new Coin(), 3, 0);
     }
     
     @Override
