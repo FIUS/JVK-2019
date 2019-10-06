@@ -4,15 +4,12 @@ openssl aes-256-cbc -K $encrypted_ffde4cf4eb9b_key -iv $encrypted_ffde4cf4eb9b_i
 eval "$(ssh-agent -s)"
 chmod 600 "$dir/deployKey"
 ssh-add "$dir/deployKey"
-rm "$dir/deployKey"
 
-git remote set-url origin git@github.com:FIUS/JVK-2019.git
-git pull origin gh-pages
+git clone --depth 1 -b gh-pages git@github.com:FIUS/JVK-2019.git gh-pages
 
 mvn compile javadoc:javadoc
-mv target/site/apidocs/ ../
+cp -r target/site/apidocs/* gh-pages
 
-git checkout gh-pages
-cp -r ../apidocs/* .
+cd gh-pages
 git commit -a -m "Update apidoc"
 git push
