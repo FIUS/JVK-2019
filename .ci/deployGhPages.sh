@@ -11,5 +11,6 @@ mvn compile javadoc:javadoc
 cp -r target/site/apidocs/* gh-pages
 
 cd gh-pages
-git commit -a -m "Update apidoc"
+git add --all
+git commit -m "Update apidoc"
 git push
