@@ -17,7 +17,7 @@ import de.unistuttgart.informatik.fius.jvk2019.Texture;
  * 
  * @author Fabian Bühler
  */
-public abstract class Morpheus extends Human {
+public class Morpheus extends Human {
     
     @Override
     protected String getTextureHandle() {

@@ -9,7 +9,6 @@
  */
 package de.unistuttgart.informatik.fius.jvk2019.provided.entity;
 
-import java.util.concurrent.CompletableFuture;
 import java.util.function.Supplier;
 
 import de.unistuttgart.informatik.fius.icge.simulation.entity.*;
@@ -79,11 +78,8 @@ public class PhoneBooth extends BasicEntity implements SolidEntity {
     
     @Override
     protected String getTextureHandle() {
-        if (this.isCurrentlySolid()) {
-            return Texture.PHONEBOOTH.getHandle();
-        } else {
-            return Texture.PHONEBOOTH_RINGING.getHandle();
-        }
+        if (this.isCurrentlySolid()) return Texture.PHONEBOOTH.getHandle();
+        return Texture.PHONEBOOTH_RINGING.getHandle();
     }
     
     @Override

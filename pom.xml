@@ -1,6 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.uni-stuttgart.informatik.fius</groupId>
 	<artifactId>JVK-2019</artifactId>
@@ -8,21 +7,21 @@
 	<name>JVK 2019 Project</name>
 	<properties>
 		<java.version>11</java.version>
-		<icge.version>2.1.3</icge.version>
+		<icge.version>2.2.0</icge.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-		<repositories>
-			<repository>
-				<id>c-hack-internal</id>
-				<name>C-Hack Repositroy</name>
-				<url>https://maven.c-hack.de/repository/internal/</url>
-			</repository>
-			<repository>
-				<id>c-hack-snapshot</id>
-				<name>C-Hack Repositroy Snapshot</name>
-				<url>https://maven.c-hack.de/repository/snapshot/</url>
-			</repository>
-		</repositories>
+	<repositories>
+		<repository>
+			<id>c-hack-internal</id>
+			<name>C-Hack Repositroy</name>
+			<url>https://maven.c-hack.de/repository/internal/</url>
+		</repository>
+		<repository>
+			<id>c-hack-snapshot</id>
+			<name>C-Hack Repositroy Snapshot</name>
+			<url>https://maven.c-hack.de/repository/snapshot/</url>
+		</repository>
+	</repositories>
 	<dependencies>
 		<dependency>
 			<groupId>de.uni-stuttgart.informatik.fius</groupId>
@@ -41,7 +40,7 @@
 					<target>${java.version}</target>
 				</configuration>
 			</plugin>
-		        <plugin>
+			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<configuration>
 					<archive>
@@ -71,15 +70,15 @@
 					<downloadJavadocs>true</downloadJavadocs>
 				</configuration>
 			</plugin>
-                        <plugin>
-                                <groupId>org.apache.maven.plugins</groupId>
-                                <artifactId>maven-javadoc-plugin</artifactId>
-                                <version>3.1.1</version>
-                                <configuration>
-                                        <additionalOptions>--show-packages=all</additionalOptions>
-                                        <excludePackageNames>de.unistuttgart.informatik.fius.jvk2019.solutions:de.unistuttgart.informatik.fius.jvk2019.tasks</excludePackageNames>
-                                </configuration> 
-                         </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.1.1</version>
+				<configuration>
+					<additionalOptions>--show-packages=all</additionalOptions>
+					<excludePackageNames>de.unistuttgart.informatik.fius.jvk2019.solutions:de.unistuttgart.informatik.fius.jvk2019.tasks</excludePackageNames>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 </project>
