@@ -9,7 +9,6 @@
  */
 package de.unistuttgart.informatik.fius.jvk2019.provided.entity;
 
-import de.unistuttgart.informatik.fius.icge.simulation.entity.GreedyEntity;
 import de.unistuttgart.informatik.fius.jvk2019.Texture;
 import de.unistuttgart.informatik.fius.jvk2019.provided.exceptions.NeoIsBrokeException;
 import de.unistuttgart.informatik.fius.jvk2019.provided.exceptions.NoCoinException;
@@ -20,16 +19,11 @@ import de.unistuttgart.informatik.fius.jvk2019.provided.exceptions.NoCoinExcepti
  * 
  * @author Tim Neumann
  */
-public class Neo extends GreedyEntity {
+public class Neo extends Human {
     
     @Override
     protected String getTextureHandle() {
         return Texture.NEO.getHandle(this.getLookingDirection());
-    }
-    
-    @Override
-    protected int getZPosition() {
-        return 10;
     }
     
     /**
@@ -54,6 +48,8 @@ public class Neo extends GreedyEntity {
      *     when there is no coin
      */
     protected void collectCoin() {
+        if (!this.canCollectCoin()) throw new NoCoinException();
+        this.collect(this.getCurrentlyCollectableEntities(Coin.class, true).get(0));
     }
     
     /**
@@ -63,6 +59,8 @@ public class Neo extends GreedyEntity {
      *     when Neo is broken
      */
     protected void dropCoin() {
+        if (!this.canDropCoin()) throw new NeoIsBrokeException();
+        this.drop(this.getCurrentlyDroppableEntities(Coin.class, true).get(0));
     }
     
     /**
@@ -70,8 +68,7 @@ public class Neo extends GreedyEntity {
      * @return whether Neo can drop a coin
      */
     protected boolean canDropCoin() {
-        //TODO
-        return false;
+        return this.getCurrentlyDroppableEntities(Coin.class, true).size() > 0;
     }
     
     /**
@@ -79,19 +76,28 @@ public class Neo extends GreedyEntity {
      * @return whether there is a coin to collect
      */
     protected boolean canCollectCoin() {
-        //TODO
-        return false;
-        
+        return this.getCurrentlyCollectableEntities(Coin.class, true).size() > 0;
     }
     
     /**
-     * setter for coins
+     * Add the amount of coins to the inventory
      * 
      * @param coins
      *     the amount of coins to set
      */
     protected void setCoins(int coins) {
-        
+        if (coins < 0) throw new IllegalArgumentException("Cannot set negative coin count!");
+        int existing = this.getCoinsInWallet();
+        if (existing < coins) {
+            for (int i = existing; i < coins; i++) {
+                this.getInventory().add(new Coin());
+            }
+        }
+        if (existing > coins) {
+            for (int i = existing; i > coins; i--) {
+                this.getInventory().remove(this.getInventory().get(Coin.class, true).get(0));
+            }
+        }
     }
     
     /**
@@ -104,25 +110,21 @@ public class Neo extends GreedyEntity {
             return true;
         }
         return false;
-    }    
-      
+    }
+    
     /**
-     * Turns Neo counter clockwise.
-     * Operation is to be implmented in MyNeo in Task 2.1.a)
+     * Turns Neo counter clockwise. Operation is to be implmented in MyNeo in Task 2.1.a)
      */
     @SuppressWarnings("static-method")
-    public void turnCounterClockwise()
-    {
+    public void turnCounterClockwise() {
         throw new UnsupportedOperationException("This Method is to be implemented in the MyNeo class.");
     }
     
     /**
-     * Turns Neo around.
-     * Operation is to be implmented in MyNeo in Task 2.1.b).
+     * Turns Neo around. Operation is to be implmented in MyNeo in Task 2.1.b).
      */
     @SuppressWarnings("static-method")
-    public void turnAround()
-    {
+    public void turnAround() {
         throw new UnsupportedOperationException("This Method is to be implemented in the MyNeo class.");
     }
     
@@ -132,8 +134,7 @@ public class Neo extends GreedyEntity {
      * @return the balance
      */
     @SuppressWarnings("static-method")
-    public int getBalance()
-    {
+    public int getBalance() {
         throw new UnsupportedOperationException("This Method is to be implemented in the MyNeo class.");
     }
     
@@ -144,31 +145,24 @@ public class Neo extends GreedyEntity {
      *     The amount to gain
      */
     @SuppressWarnings("static-method")
-    public void gainCoins(int amountOfCoins)
-    {
+    public void gainCoins(int amountOfCoins) {
         throw new UnsupportedOperationException("This Method is to be implemented in the MyNeo class.");
     }
     
-    
     /**
-     * Helper Method that sets a fixed amount of coins for easier verification.
-     * Used in Verification of Task 2.1
-     * @param amountOfCoins the new amount of coins
+     * Helper Method that sets a fixed amount of coins for easier verification. Used in Verification of Task 2.1
+     * 
+     * @param amountOfCoins
+     *     the new amount of coins
      */
     public void setCoinsInWallet(int amountOfCoins) {
         this.setCoins(amountOfCoins);//calling real method for good measure.
-        this.currentCoinCount = amountOfCoins;
     }
     
     /**
      * @return the number of coins in neos wallet
      */
     public int getCoinsInWallet() {
-        return this.currentCoinCount;
+        return this.getInventory().get(Coin.class, true).size();
     }
-    
-    /**
-     * Helper field to hold the current amount of coins set by setCoinsForVerify
-     */
-    public int currentCoinCount;
 }
