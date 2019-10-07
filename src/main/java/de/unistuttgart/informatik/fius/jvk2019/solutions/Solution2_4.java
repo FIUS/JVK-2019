@@ -9,6 +9,7 @@
  */
 package de.unistuttgart.informatik.fius.jvk2019.solutions;
 
+import de.unistuttgart.informatik.fius.icge.simulation.Simulation;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.MyNeo;
 import de.unistuttgart.informatik.fius.jvk2019.tasks.Task2_4;
 
@@ -19,6 +20,14 @@ import de.unistuttgart.informatik.fius.jvk2019.tasks.Task2_4;
  * @author Stefan Zindl
  */
 public class Solution2_4 extends Task2_4 {
+    
+    // TODO 2.5 f) attributes
+    
+    @Override
+    public void prepare(Simulation sim) {
+        super.prepare(sim);
+        // TODO 2.5 f) attribute initialization
+    }
     
     /**
      * 
