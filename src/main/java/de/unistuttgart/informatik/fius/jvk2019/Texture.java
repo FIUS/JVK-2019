@@ -35,7 +35,9 @@ public enum Texture {
     /** The default mario textures */
     MARIO("mario/mario-east-0.png", "mario/mario-south-0.png", "mario/mario-west-0.png", "mario/mario-north-0.png"),
     /** the default phone booth texture */
-    PHONEBOOTH("Telefon.png"),
+    PHONEBOOTH("phone_close.png"),
+    /** the ringing phone booth texture */
+    PHONEBOOTH_RINGING("phone_open.png"),
     /** red pill texture */
     BLUEPILL("pills/pill_blue.png"),
     /** blue pill texture */

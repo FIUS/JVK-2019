@@ -79,7 +79,11 @@ public class PhoneBooth extends BasicEntity implements SolidEntity {
     
     @Override
     protected String getTextureHandle() {
-        return Texture.PHONEBOOTH.getHandle();
+        if (this.isCurrentlySolid()) {
+            return Texture.PHONEBOOTH.getHandle();
+        } else {
+            return Texture.PHONEBOOTH_RINGING.getHandle();
+        }
     }
     
     @Override
