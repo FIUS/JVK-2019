@@ -105,22 +105,6 @@ public class Neo extends Human {
     }
     
     /**
-     * Turns Neo counter clockwise. Operation is to be implmented in MyNeo in Task 2.1.a)
-     */
-    @SuppressWarnings("static-method")
-    public void turnCounterClockwise() {
-        throw new UnsupportedOperationException("This Method is to be implemented in the MyNeo class.");
-    }
-    
-    /**
-     * Turns Neo around. Operation is to be implmented in MyNeo in Task 2.1.b).
-     */
-    @SuppressWarnings("static-method")
-    public void turnAround() {
-        throw new UnsupportedOperationException("This Method is to be implemented in the MyNeo class.");
-    }
-    
-    /**
      * Gets the Balance of the current Neo. * Operation is to be implmented in MyNeo in Task 2.1.c) .
      * 
      * @return the balance

@@ -43,22 +43,32 @@ public class MyNeo extends Neo {
         this.move();
     }
     
-    //TODO: Task 2.2 a) add JavaDoc to the operation you just created
-    //TODO: Task 2.1 a) create and implement turnCounterClockwise here:
+    /**
+     * Turns Neo counter clockwise. Operation is to be implmented in MyNeo in Task 2.1.a)
+     */
+    public void turnCounterClockwise() {
+        //TODO: Task 2.1 a) implementation here
+    }
     
-    //TODO: Task 2.2 a) add JavaDoc to the operation you just created
-    //TODO: Task 2.1 b) create and implement turnAround here:
+    /**
+     * Turns Neo around. Operation is to be implmented in MyNeo in Task 2.1.b).
+     */
+    public void turnAround() {
+        //TODO: Task 2.1 b) implementation here
+    }
     
-    //TODO: Task 2.2 a) add JavaDoc to the operation you just created
-    //TODO: Task 2.1 c) create and implement getBalance here:
+    //TODO: Task 2.1 c) javadoc here
+    //TODO: Task 2.1 c) implementation here (getBalance)
     
-    //TODO: Task 2.2 a) add JavaDoc to the operation you just created
-    //TODO: Task 2.1 c) create and implement gainCoins here:
+    //TODO: Task 2.1 d) javadoc here
+    //TODO: Task 2.1 d) implementation here (gainCoins)
     
-    //TODO: Task 2.5.d) Override the move command so it also counts the steps taken:
+    //////////////////////////////////////////////////
     
     //TODO: Task 2.5 b) add getter queries:
     
-    //TODO: Task 2.5 c) add setter queries:
+    //TODO: Task 2.5 c) add setter commands:
+    
+    //TODO: Task 2.5.d) Override the move command so it also counts the steps taken:
     
 }

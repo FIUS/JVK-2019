@@ -21,17 +21,16 @@ import de.unistuttgart.informatik.fius.jvk2019.provided.entity.MyNeo;
  * @author Lion Wagner
  */
 public class Solution2_2 extends Task2_2 {
-       
-
-    //create myNeo with 6 coins
-    MyNeo myNeo = new MyNeo(6);
     
     @Override
-    public void prepare(Simulation sim) {     
+    public void prepare(Simulation sim) {
         super.prepare(sim);
-                
+        
+        //create myNeo with 6 coins
+        this.myNeo = new MyNeo(6);
+        
         //add myNeo to the playingfield
-        sim.getPlayfield().addEntity(new Position(0, 0), myNeo);
+        sim.getPlayfield().addEntity(new Position(0, 0), this.myNeo);
     }
     
     /**
