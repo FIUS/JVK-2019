@@ -35,7 +35,7 @@ public class Neo extends Human {
      *     when there is no coin
      */
     @InspectionMethod()
-    protected void collectCoin() {
+    public void collectCoin() {
         if (!this.canCollectCoin()) throw new NoCoinException();
         this.collect(this.getCurrentlyCollectableEntities(Coin.class, true).get(0));
     }
@@ -47,7 +47,7 @@ public class Neo extends Human {
      *     when Neo is broken
      */
     @InspectionMethod()
-    protected void dropCoin() {
+    public void dropCoin() {
         if (!this.canDropCoin()) throw new NeoIsBrokeException();
         this.drop(this.getCurrentlyDroppableEntities(Coin.class, true).get(0));
     }
@@ -57,7 +57,7 @@ public class Neo extends Human {
      * @return whether Neo can drop a coin
      */
     @InspectionAttribute
-    protected boolean canDropCoin() {
+    public boolean canDropCoin() {
         return this.getCurrentlyDroppableEntities(Coin.class, true).size() > 0;
     }
     
@@ -66,7 +66,7 @@ public class Neo extends Human {
      * @return whether there is a coin to collect
      */
     @InspectionAttribute
-    protected boolean canCollectCoin() {
+    public boolean canCollectCoin() {
         return this.getCurrentlyCollectableEntities(Coin.class, true).size() > 0;
     }
     
