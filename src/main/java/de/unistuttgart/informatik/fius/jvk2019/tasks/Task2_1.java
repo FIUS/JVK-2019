@@ -42,22 +42,19 @@ public abstract class Task2_1 extends TaskWithHelperFunctions {
     }
     
     @Override
-    public final boolean verify() {
-        
-        MyNeo myNeo = this.sim.getPlayfield().getAllEntitiesOfType(MyNeo.class, false).get(0);
-        
+    public final boolean verify() {               
         //output the value of the coins that neo currently holds (1 should be collected during solve)
-        Logger.simulation.append("\nmyNeo has currently coins with the value of " + myNeo.getBalance() + "\n");
-        Direction lookingDirection = myNeo.getLookingDirection();
+        Logger.simulation.append("\nmyNeo has currently coins with the value of " + this.myNeo.getBalance() + "\n");
+        Direction lookingDirection = this.myNeo.getLookingDirection();
         
-        myNeo.turnCounterClockwise();
-        if (lookingDirection.clockWiseNext().clockWiseNext().clockWiseNext() != myNeo.getLookingDirection()) return false;
+        this.myNeo.turnCounterClockwise();
+        if (lookingDirection.clockWiseNext().clockWiseNext().clockWiseNext() != this.myNeo.getLookingDirection()) return false;
         
-        myNeo.turnAround();
-        if (lookingDirection.clockWiseNext() != myNeo.getLookingDirection()) return false;
+        this.myNeo.turnAround();
+        if (lookingDirection.clockWiseNext() != this.myNeo.getLookingDirection()) return false;
         
-        myNeo.gainCoins(12);
-        if (myNeo.getBalance() != 24) return false;
+        this.myNeo.gainCoins(12);
+        if (this.myNeo.getBalance() != 24) return false;
         
         return true;
     }
