@@ -39,9 +39,9 @@ public abstract class Task2_2 extends TaskWithHelperFunctions {
     
     @Override
     public final boolean verify() {
-        //check if positon 0,0 to 0,5 contain coins.
+        //check if positon 0,0 to 5,0 contain coins.
         for (int i = 0; i < 6; i++) {
-            List<Entity> e = this.sim.getPlayfield().getEntitiesAt(new Position(0, i));
+            List<Entity> e = this.sim.getPlayfield().getEntitiesAt(new Position(i, 0));
             if (e.stream().noneMatch(item -> item.getClass() == Coin.class)) return false;
         }
         return true;
