@@ -43,7 +43,7 @@ public abstract class Task2_1 extends TaskWithHelperFunctions {
     @Override
     public final boolean verify() {
         //output the value of the coins that neo currently holds (1 should be collected during solve)
-        Logger.simulation.append("\nmyNeo has currently coins with the value of " + this.myNeo.getBalance() + "\n");
+        Logger.simout.append("\nmyNeo has currently coins with the value of " + this.myNeo.getBalance() + "\n");
         Direction lookingDirection = this.myNeo.getLookingDirection();
         
         this.myNeo.turnCounterClockwise();
