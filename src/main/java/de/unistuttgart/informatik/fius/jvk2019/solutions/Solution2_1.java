@@ -46,14 +46,6 @@ public class Solution2_1 extends Task2_1 {
         this.myNeo.moveIfPossible();
         this.myNeo.turnCounterClockwise();
         this.myNeo.move();
-        CollectCoin();
+        this.myNeo.collectCoin();
     }
-    
-    //Some helper operations for the task. Can be ignored and are not to be touched. -----------------------------------------------------------------
-    
-    private void CollectCoin() {
-        List<Coin> collectables = this.myNeo.getCurrentlyCollectableEntities(Coin.class, true);
-        if (collectables.size() > 0) this.myNeo.collect(collectables.get(0));
-    }
-    
 }
