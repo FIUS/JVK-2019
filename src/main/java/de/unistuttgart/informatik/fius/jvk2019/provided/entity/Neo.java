@@ -132,7 +132,7 @@ public class Neo extends Human {
      *     the new amount of coins
      */
     public void setCoinsInWallet(int amountOfCoins) {
-        this.setCoins(amountOfCoins);//calling real method for good measure.
+        this.setCoins(amountOfCoins); //forwarding to real implementation
     }
     
     /**

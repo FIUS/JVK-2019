@@ -26,16 +26,13 @@ public class MyNeo extends Neo {
     }
     
     /**
-     * Creates a new MyNeo that has a certaint amount of coins.
+     * Creates a new MyNeo with a certain amount of coins in his wallet.
      * 
      * @param starterCoins
      *     coin count that this neo starts with
      */
     public MyNeo(int starterCoins) {
         setCoinsInWallet(starterCoins);
-        for (int i = 0; i < starterCoins; i++) {
-            this.getInventory().add(new Coin());
-        }
     }
     
     /**
@@ -47,14 +44,14 @@ public class MyNeo extends Neo {
     }
     
     /**
-     * Turns Neo counter clockwise. Operation is to be implmented in MyNeo in Task 2.1.a)
+     * Turns Neo counter clockwise. Operation is to be implemented in MyNeo in Task 2.1.a)
      */
     public void turnCounterClockwise() {
         //TODO: Task 2.1 a) implementation here
     }
     
     /**
-     * Turns Neo around. Operation is to be implmented in MyNeo in Task 2.1.b).
+     * Turns Neo around. Operation is to be implemented in MyNeo in Task 2.1.b).
      */
     public void turnAround() {
         //TODO: Task 2.1 b) implementation here

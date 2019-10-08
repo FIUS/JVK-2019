@@ -29,7 +29,7 @@ public class Solution2_2 extends Task2_2 {
         //create myNeo with 6 coins
         this.myNeo = new MyNeo(6);
         
-        //add myNeo to the playingfield
+        //add myNeo to the playing field
         sim.getPlayfield().addEntity(new Position(0, 0), this.myNeo);
     }
     
