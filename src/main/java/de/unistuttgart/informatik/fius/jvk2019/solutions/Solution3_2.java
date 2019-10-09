@@ -19,7 +19,7 @@ public class Solution3_2 extends Task3_2 {
     
     @Override
     protected void turnRight() {
-        // TODO 3.2.a) implement turning to the right with a for looü 
+        // TODO 3.2.a) implement turning to the right with a for loop 
     }
 
     @Override
