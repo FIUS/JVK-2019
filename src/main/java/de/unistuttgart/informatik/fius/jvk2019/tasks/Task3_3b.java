@@ -16,6 +16,7 @@ import de.unistuttgart.informatik.fius.jvk2019.provided.Color;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Neo;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.PhoneBooth;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Pill;
+import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Wall;
 
 /**
  * TODO: The task for ex 2 (b) on worksheet 3
@@ -50,23 +51,26 @@ public abstract class Task3_3b extends TaskWithHelperFunctions{
      */
     private final void generatePath(final Playfield playfield) {
         //neo will start at (5,5)
-        //coord for placement
-        int x = 5;
-        int y = 5;
         //first steps
-        x+=getRandom();
-        playfield.addEntity(new Position(x, y), new Pill(Color.RED));
+        playfield.addEntity(new Position(9, 5), new Pill(Color.RED));
         //second step
-        y-=getRandom();
-        playfield.addEntity(new Position(x, y), new Pill(Color.BLUE));
+        playfield.addEntity(new Position(9, 8), new Pill(Color.RED));
+        playfield.addEntity(new Position(8, 8), new Pill(Color.BLUE));
+        playfield.addEntity(new Position(8, 9), new Pill(Color.RED));
+
+        playfield.addEntity(new Position(6, 9), new Pill(Color.RED));
+        playfield.addEntity(new Position(6, 8), new Pill(Color.BLUE));
+        
         //third step
-        x+=getRandom();
-        playfield.addEntity(new Position(x, y), new Pill(Color.RED));
-        //last step
-        y+=getRandom();
-        playfield.addEntity(new Position(x, y), new Pill(Color.RED));
-        x+=getRandom();
-        playfield.addEntity(new Position(x, y), new PhoneBooth());
+        playfield.addEntity(new Position(5, 8), new Pill(Color.RED));
+        playfield.addEntity(new Position(5, 7), new PhoneBooth());
+        this.spawnEntity(new Wall(), 4, 7);
+        this.spawnEntity(new Wall(), 4, 6);
+        this.spawnEntity(new Wall(), 5, 6);
+        this.spawnEntity(new Wall(), 6, 6);
+        this.spawnEntity(new Wall(), 6, 7);
+        this.spawnEntity(new Wall(), 7, 8);
+        this.spawnEntity(new Wall(), 7, 7);
         
     }
     
@@ -86,6 +90,6 @@ public abstract class Task3_3b extends TaskWithHelperFunctions{
     
     @Override
     public boolean verify() {
-        return this.flag1;
+        return this.neo.isOnPhoneBooth();
     }
 }

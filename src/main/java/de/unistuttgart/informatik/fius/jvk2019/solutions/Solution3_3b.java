@@ -9,18 +9,18 @@
  */
 package de.unistuttgart.informatik.fius.jvk2019.solutions;
 
+import de.unistuttgart.informatik.fius.jvk2019.provided.Color;
+import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Pill;
 import de.unistuttgart.informatik.fius.jvk2019.tasks.Task3_3b;
 
 /**
  * TODO: Solution for ex 3 (b) from worksheet 3
- * @author paulesn
+ * @author Sebastian "Zottel92" Grund
  */
 public class Solution3_3b extends Task3_3b {
     
     @Override
     public void solve() {
-        // TODO Auto-generated method stub
-        
     }
     
 }
