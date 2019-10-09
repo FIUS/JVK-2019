@@ -49,7 +49,7 @@ public abstract class Task3_2 extends TaskWithHelperFunctions {
     /**
      * Let neo do a right turn.
      */
-    protected abstract void turnRight();
+    protected abstract void turnLeft();
 
 
     /**
@@ -63,9 +63,9 @@ public abstract class Task3_2 extends TaskWithHelperFunctions {
     @Override
     public boolean verify() {        
         this.neo = new Neo(); //resetting looking direction to EAST
-        turnRight();
-        if(this.neo.getLookingDirection() != Direction.SOUTH) return false;
-        turnRight();
+        turnLeft();
+        if(this.neo.getLookingDirection() != Direction.NORTH) return false;
+        turnLeft();
         if(this.neo.getLookingDirection() != Direction.WEST) return false;
         
         

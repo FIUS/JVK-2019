@@ -18,8 +18,8 @@ import de.unistuttgart.informatik.fius.jvk2019.tasks.Task3_2;
 public class Solution3_2 extends Task3_2 {
     
     @Override
-    protected void turnRight() {
-        // TODO 3.2.a) implement turning to the right with a for loop 
+    protected void turnLeft() {
+        // TODO 3.2.a) implement turning to the left with a for loop 
     }
 
     @Override
