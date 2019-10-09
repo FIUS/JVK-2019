@@ -14,18 +14,6 @@ import de.unistuttgart.informatik.fius.icge.simulation.SimulationHostFactory;
 import de.unistuttgart.informatik.fius.icge.simulation.entity.EntityTypeRegistry;
 import de.unistuttgart.informatik.fius.icge.simulation.tasks.TaskRegistry;
 import de.unistuttgart.informatik.fius.icge.ui.TextureRegistry;
-import de.unistuttgart.informatik.fius.jvk2019.solutions.Solution0_1;
-import de.unistuttgart.informatik.fius.jvk2019.solutions.Solution0_2;
-import de.unistuttgart.informatik.fius.jvk2019.solutions.Solution0_3;
-import de.unistuttgart.informatik.fius.jvk2019.solutions.Solution0_4;
-import de.unistuttgart.informatik.fius.jvk2019.solutions.Solution1;
-import de.unistuttgart.informatik.fius.jvk2019.solutions.Solution2_1;
-import de.unistuttgart.informatik.fius.jvk2019.solutions.Solution2_4;
-import de.unistuttgart.informatik.fius.jvk2019.solutions.Solution3_1;
-import de.unistuttgart.informatik.fius.jvk2019.solutions.Solution3_2;
-import de.unistuttgart.informatik.fius.jvk2019.solutions.Solution3_3a;
-import de.unistuttgart.informatik.fius.jvk2019.solutions.Solution3_3b;
-import de.unistuttgart.informatik.fius.jvk2019.solutions.Solution3_4;
 import de.unistuttgart.informatik.fius.jvk2019.provided.Color;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Coin;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Morpheus;
@@ -90,5 +78,8 @@ public class Main {
         tr.registerTask("Task3_3 (b)", new Solution3_3b());
         tr.registerTask("Task3_4", new Solution3_4());
         tr.registerTask("Task3_5", new Solution3_5());
+        // extra challenging tasks:
+        //tr.registerTask("TaskX_1", new SolutionX_1());
+        //tr.registerTask("TaskX_2", new SolutionX_2());
     }
 }

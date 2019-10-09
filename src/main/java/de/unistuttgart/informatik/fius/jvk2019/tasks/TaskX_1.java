@@ -22,7 +22,7 @@ import de.unistuttgart.informatik.fius.icge.simulation.Position;
 import de.unistuttgart.informatik.fius.icge.simulation.Simulation;
 import de.unistuttgart.informatik.fius.jvk2019.provided.Color;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Coin;
-import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Neo;
+import de.unistuttgart.informatik.fius.jvk2019.provided.entity.MyNeo;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.PhoneBooth;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Pill;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.RequirementChecks;
@@ -39,7 +39,7 @@ public abstract class TaskX_1 extends TaskWithHelperFunctions {
     /**
      * The player character
      */
-    protected Neo player;
+    protected MyNeo player;
     
     /**
      * The phoneBooth used as the goal.
@@ -75,13 +75,14 @@ public abstract class TaskX_1 extends TaskWithHelperFunctions {
         
         Playfield field = this.sim.getPlayfield();
         this.goal = new PhoneBooth();
-        Supplier<Boolean> canUseBooth = RequirementChecks
-                .and(RequirementChecks.testCoinCount(() -> this.player, RequirementChecks.getEqualToPredicate(0)), //
-                        RequirementChecks.testInventoryCount(() -> this.player, Pill.class, RequirementChecks.getEqualToPredicate(1)), //
-                        RequirementChecks.testEntytyCountOnField(field, Coin.class, RequirementChecks.getEqualToPredicate(0), 0, 0), //
-                        RequirementChecks.testEntytyCountOnField(field, Coin.class, RequirementChecks.getEqualToPredicate(0), cageSize - 1, 0), //
-                        this::verifyArray
-                );
+        Supplier<Boolean> canUseBooth = RequirementChecks.and(
+                // used comments to trick autoformatter...
+                RequirementChecks.testCoinCount(() -> this.player, RequirementChecks.getEqualToPredicate(0)), //
+                RequirementChecks.testInventoryCount(() -> this.player, Pill.class, RequirementChecks.getEqualToPredicate(1)), //
+                RequirementChecks.testEntytyCountOnField(field, Coin.class, RequirementChecks.getEqualToPredicate(0), 0, 0), //
+                RequirementChecks.testEntytyCountOnField(field, Coin.class, RequirementChecks.getEqualToPredicate(0), cageSize - 1, 0), //
+                this::verifyArray
+        );
         this.goal.setRequirementsChecker(canUseBooth);
         this.spawnEntity(this.goal, cageSize - 1, 0);
         

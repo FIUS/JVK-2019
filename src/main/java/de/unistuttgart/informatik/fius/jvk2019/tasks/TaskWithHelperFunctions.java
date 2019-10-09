@@ -107,9 +107,24 @@ public abstract class TaskWithHelperFunctions implements Task {
                 return null;
             }
         };
+        return registerProgram(programName, s);
+    }
+    
+    /**
+     * Register a program class with the provided supplier in the program registry.
+     * 
+     * @param programName
+     *     the name to register the program class under
+     * @param programFactory
+     *     the provided supplier to create new program instances
+     * @return the programName for later use
+     */
+    protected String registerProgram(String programName, Supplier<EntityProgram> programFactory) {
         // test if supplier works
-        if (s.get() == null) throw new IllegalArgumentException("The provided program class has no constructor that takes no arguments!");
-        this.sim.getEntityProgramRegistry().registerManyEntityProgram(programName, s);
+        if (
+            programFactory.get() == null
+        ) throw new IllegalArgumentException("The provided program class has no constructor that takes no arguments!");
+        this.sim.getEntityProgramRegistry().registerManyEntityProgram(programName, programFactory);
         return programName;
     }
     
@@ -138,9 +153,9 @@ public abstract class TaskWithHelperFunctions implements Task {
      * @param entities
      *     to wait for
      */
-    protected void waitForEntitesToFinishProgram(Entity... entities) {
+    protected void waitForEntitesToFinishProgram(List<? extends Entity> entities) {
         final EntityProgramRunner runner = this.sim.getEntityProgramRunner();
-        final List<CompletableFuture<Void>> runningPrograms = Arrays.stream(entities).map(ent -> {
+        final List<CompletableFuture<Void>> runningPrograms = entities.stream().map(ent -> {
             try {
                 RunningProgramInfo info = runner.getRunningProgramInfo(ent);
                 return info.getFuture();
@@ -149,6 +164,16 @@ public abstract class TaskWithHelperFunctions implements Task {
             }
         }).filter(program -> program != null).collect(Collectors.toList());
         CompletableFuture.allOf(runningPrograms.toArray(new CompletableFuture[runningPrograms.size()])).join();
+    }
+    
+    /**
+     * Wait for all entities to finish their running program.
+     * 
+     * @param entities
+     *     to wait for
+     */
+    protected void waitForEntitesToFinishProgram(Entity... entities) {
+        this.waitForEntitesToFinishProgram(Arrays.stream(entities).collect(Collectors.toList()));
     }
     
     /**
