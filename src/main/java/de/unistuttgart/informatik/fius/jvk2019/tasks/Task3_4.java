@@ -23,14 +23,14 @@ import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Pill;
  */
 public abstract class Task3_4 extends TaskWithHelperFunctions {
     
-    private Neo neo;
+    protected Neo neo;
     private Playfield field;
     
     public void prepare(Simulation sim) {
         
         this.neo = new Neo();
         this.field = sim.getPlayfield();
-        this.field.addEntity(new Position(-3, -3), this.neo);
+        this.field.addEntity(new Position(0, 0), this.neo);
         
         SimulationUtilities.createRectangleWall(sim, 10, 10, -1, -1);
         

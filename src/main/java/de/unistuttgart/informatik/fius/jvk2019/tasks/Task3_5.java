@@ -33,7 +33,7 @@ public abstract class Task3_5 extends TaskWithHelperFunctions {
     @Override
     public boolean verify() {
         // TODO Auto-generated method stub
-        return false;
+        return this.neo.getCoinsInWallet() == 50000;
     }
     
 }
