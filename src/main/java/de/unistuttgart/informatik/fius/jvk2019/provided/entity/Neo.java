@@ -9,11 +9,14 @@
  */
 package de.unistuttgart.informatik.fius.jvk2019.provided.entity;
 
+import java.util.List;
+
 import de.unistuttgart.informatik.fius.icge.simulation.inspection.InspectionAttribute;
 import de.unistuttgart.informatik.fius.icge.simulation.inspection.InspectionMethod;
 import de.unistuttgart.informatik.fius.jvk2019.Texture;
 import de.unistuttgart.informatik.fius.jvk2019.provided.exceptions.NeoIsBrokeException;
 import de.unistuttgart.informatik.fius.jvk2019.provided.exceptions.NoCoinException;
+import de.unistuttgart.informatik.fius.jvk2019.provided.exceptions.NoPillException;
 
 
 /**
@@ -102,6 +105,30 @@ public class Neo extends Human {
             return true;
         }
         return false;
+    }
+    
+    /**
+     * checks if neo is currently standing on a field that also contains a pill
+     * 
+     * @return if true it returns the pill, if false it return null
+     */
+    @InspectionMethod()
+    public Pill peakPill() {
+        List<Pill> pills = this.getCurrentlyCollectableEntities(Pill.class, true);
+        if(pills.isEmpty()) return null;
+        return pills.get(0);
+    }
+    
+    /**
+     * collects a pill from the actual field
+     * 
+     * @throws NoPillException
+     *     when there is no pill
+     */
+    @InspectionMethod()
+    public void collectPill() {
+        if (this.peakPill() == null) throw new NoPillException();
+        this.collect(this.getCurrentlyCollectableEntities(Pill.class, true).get(0));
     }
     
     /**
