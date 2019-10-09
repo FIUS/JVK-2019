@@ -13,6 +13,7 @@ import de.unistuttgart.informatik.fius.icge.simulation.Direction;
 import de.unistuttgart.informatik.fius.icge.simulation.Position;
 import de.unistuttgart.informatik.fius.icge.simulation.Simulation;
 import de.unistuttgart.informatik.fius.jvk2019.provided.SimulationUtilities;
+import de.unistuttgart.informatik.fius.jvk2019.provided.entity.MyNeo;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Neo;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.PhoneBooth;
 
@@ -32,13 +33,14 @@ public abstract class Task3_2 extends TaskWithHelperFunctions {
     /**
      * The walking neo
      */
-    protected Neo neo;
+    protected MyNeo myNeo;
 
     @Override
     public void prepare(Simulation sim) {
         super.prepare(sim);
 
-        this.neo = new Neo();
+        this.myNeo = new MyNeo();
+        this.spawnEntity(myNeo, 1, 1);
         this.changeToD();
         SimulationUtilities.createRectangleWall(sim, 1, 15, 0, 0);
         if (!this.boothsDestroyed) {
@@ -47,7 +49,7 @@ public abstract class Task3_2 extends TaskWithHelperFunctions {
     }
     
     /**
-     * Let neo do a right turn.
+     * Let neo do a left turn.
      */
     protected abstract void turnLeft();
 
@@ -61,14 +63,17 @@ public abstract class Task3_2 extends TaskWithHelperFunctions {
     public abstract void solve();
 
     @Override
-    public boolean verify() {        
-        this.neo = new Neo(); //resetting looking direction to EAST
+    public boolean verify() {
+        //NEO Spawns with looking direction EAST
         turnLeft();
-        if(this.neo.getLookingDirection() != Direction.NORTH) return false;
+        if(this.myNeo.getLookingDirection() != Direction.NORTH) return false;
         turnLeft();
-        if(this.neo.getLookingDirection() != Direction.WEST) return false;
+        if(this.myNeo.getLookingDirection() != Direction.WEST) return false;
         
         
-        return neo.isOnPhoneBooth();
+        if(this.myNeo.getPosition().equals(new Position(15,1)) && this.boothsDestroyed) {
+            return true;
+        }
+        return myNeo.isOnPhoneBooth();
     }
 }
