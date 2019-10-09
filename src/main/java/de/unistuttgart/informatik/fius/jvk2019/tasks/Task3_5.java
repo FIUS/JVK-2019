@@ -25,9 +25,6 @@ public abstract class Task3_5 extends TaskWithHelperFunctions {
     public void prepare(Simulation sim) {
         this.neo = new Neo();
         sim.getPlayfield().addEntity(new Position(0,0), this.neo);
-        for(int i = 0; i<10;++i) {
-            this.neo.collect(new Coin());
-        }
     }
     
     @Override
