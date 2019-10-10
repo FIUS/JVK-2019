@@ -6,7 +6,7 @@ public class MySmartNeo extends SmartNeo {
         // TODO task 4.1 b) here
     }
 
-    protected boolean checkSideWall() {
+    public boolean checkSideWall() {
         // TODO task 4.1 a) here
         return false;
     }

@@ -5,7 +5,7 @@ public class MySmartLefthandedNeo extends SmartNeo {
         // TODO task 4.2 a) here
     }
 
-    protected boolean checkSideWall() {
+    public boolean checkSideWall() {
         // TODO task 4.2 a) here
         return false;
     }
