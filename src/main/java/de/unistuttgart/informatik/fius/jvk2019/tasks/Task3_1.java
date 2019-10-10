@@ -117,7 +117,7 @@ public abstract class Task3_1 extends TaskWithHelperFunctions {
             //check random value
             if (!(randomNum > 0 && randomNum < 10)) {
                 //its a value that should be false
-                if (exIII(randomNum)) {
+                if (exIV(randomNum)) {
                     counter--;
                 }
             }
@@ -126,16 +126,16 @@ public abstract class Task3_1 extends TaskWithHelperFunctions {
         
         //check given range
         for (int i = 1; i <= 9; ++i) {
-            if (exIV(i)) {
+            if (exV(i)) {
                 counter--;
             }
         }
         //check edgecase
-        if (exIV(0)) {
+        if (exV(0)) {
             counter++;
         }
         //check edgecase
-        if (exIV(10)) {
+        if (exV(10)) {
             counter++;
         }
         
@@ -146,7 +146,7 @@ public abstract class Task3_1 extends TaskWithHelperFunctions {
             //check random value
             if (!(randomNum > 0 && randomNum < 10)) {
                 //its a value that should be false
-                if (exIII(randomNum)) {
+                if (exV(randomNum)) {
                     counter++;
                 }
             }
