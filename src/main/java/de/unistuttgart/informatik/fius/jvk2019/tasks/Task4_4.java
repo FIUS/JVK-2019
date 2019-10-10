@@ -24,11 +24,9 @@ import de.unistuttgart.informatik.fius.jvk2019.provided.entity.Wall;
 
 
 /**
- * An example task
- * 
  * @author Fabian Bühler
  */
-public abstract class TaskX_2 extends TaskWithHelperFunctions {
+public abstract class Task4_4 extends TaskWithHelperFunctions {
     
     /**
      * The player characters

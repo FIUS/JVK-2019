@@ -30,11 +30,9 @@ import de.unistuttgart.informatik.fius.jvk2019.provided.entity.StandardPhoneBoot
 
 
 /**
- * An example task
- * 
  * @author Fabian Bühler
  */
-public abstract class TaskX_1 extends TaskWithHelperFunctions {
+public abstract class Task4_3 extends TaskWithHelperFunctions {
     
     /**
      * The player character

@@ -14,15 +14,15 @@ import java.util.ArrayList;
 import de.unistuttgart.informatik.fius.icge.simulation.Simulation;
 import de.unistuttgart.informatik.fius.jvk2019.provided.LogicProgram;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.MyNeo;
-import de.unistuttgart.informatik.fius.jvk2019.tasks.TaskX_2;
+import de.unistuttgart.informatik.fius.jvk2019.tasks.Task4_4;
 
 
 /**
- * The solution for TaskX_2
+ * The solution for Task4_4
  *
  * @author Fabian Bühler
  */
-public class SolutionX_2 extends TaskX_2 {
+public class Solution4_4 extends Task4_4 {
     
     @Override
     public void prepare(Simulation sim) {

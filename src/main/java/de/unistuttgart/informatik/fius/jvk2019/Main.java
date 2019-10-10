@@ -79,8 +79,7 @@ public class Main {
         tr.registerTask("Task3_4", new Solution3_4());
         tr.registerTask("Task3_5", new Solution3_5());
         tr.registerTask("Task4_2", new Solution4_2());
-        // extra challenging tasks:
-        //tr.registerTask("TaskX_1", new SolutionX_1());
-        //tr.registerTask("TaskX_2", new SolutionX_2());
+        tr.registerTask("Task4_3", new Solution4_3());
+        tr.registerTask("Task4_4", new Solution4_4());
     }
 }

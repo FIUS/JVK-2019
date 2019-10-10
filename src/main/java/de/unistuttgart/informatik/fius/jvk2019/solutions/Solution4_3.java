@@ -11,15 +11,15 @@ package de.unistuttgart.informatik.fius.jvk2019.solutions;
 
 import de.unistuttgart.informatik.fius.icge.simulation.Simulation;
 import de.unistuttgart.informatik.fius.jvk2019.provided.entity.MyNeo;
-import de.unistuttgart.informatik.fius.jvk2019.tasks.TaskX_1;
+import de.unistuttgart.informatik.fius.jvk2019.tasks.Task4_3;
 
 
 /**
- * The solution for TaskX_1
+ * The solution for Task4_3
  *
  * @author Fabian Bühler
  */
-public class SolutionX_1 extends TaskX_1 {
+public class Solution4_3 extends Task4_3 {
     
     @Override
     public void prepare(Simulation sim) {

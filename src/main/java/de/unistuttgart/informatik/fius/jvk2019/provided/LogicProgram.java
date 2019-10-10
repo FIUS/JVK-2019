@@ -14,7 +14,7 @@ import de.unistuttgart.informatik.fius.jvk2019.provided.entity.MyNeoProgram;
 
 
 /**
- * // TODO (see SolutionX_2)
+ * // TODO (see Solution4_4)
  */
 public class LogicProgram extends MyNeoProgram {
     
